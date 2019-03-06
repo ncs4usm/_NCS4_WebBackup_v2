@@ -1,0 +1,462 @@
+<style>
+/* [FLEX] */
+.flex-tablewrap{
+  margin: auto;
+}
+.f-row{
+
+}
+.f-cell{
+
+}
+/* [END FLEX] */
+/* [READ MORE] */
+.read-more-state{
+  display: none;   /* This is used as a state checker: it is not visible on the page */
+}
+
+.read-more-target{
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -o-transition: .5s ease;
+  transition: .5s ease;
+  overflow: hidden;
+}
+.read-more-state:checked ~ .read-more-wrap .read-more-target{
+  opacity: 1;
+  max-height: none;
+  font-size: inherit;
+}
+.read-more-state ~ .read-more-trigger:before{  /* This is used to insert text into our button */
+    content: 'Show more';
+}
+.read-more-state:checked ~ .read-more-trigger:before{  /* This is used to insert text into our button */
+    content: 'Show less';
+}
+.read-more-trigger{
+  padding: 5px;
+  background-color: white;
+  color: darkgrey;
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* [END READ MORE] */
+
+/* [STYLES] */
+.flex-tablewrap img{
+  display: block;
+  margin: 0;
+  max-width: 350px;
+  max-height:200px;
+  height: auto;
+  width: auto;
+}
+.imgholder{
+  height: 200px;
+  display: flex;
+  display: -webkit-flex;
+  align-items:center;
+  -webkit-align-items: center;
+}
+.f-cell{
+  background-color: white;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  display: block;
+}
+.filler{
+  border: none;
+}
+
+.category{
+  width: 100%;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  /* padding: 20px; */
+}
+.category h2{
+  color: #425d72;
+}
+
+/* [END STYLES] */
+
+/* [ADAPTIVE STYLES] */
+@media screen and (max-width: 900px){
+  .f-row{
+    -webkit-flex-direction: row; /* Safari 6.1+ */
+    flex-direction: column;
+  }
+}
+/* [END ADAPTIVE STYLES] */
+
+</style>
+
+
+<!--
+Evaluated Product List categories:
+
+Detection:
+Passport Systems Inc – Radiation Detection
+Cleveland Electric Laboratories – Intrusion detection sensors
+VWK9 – Explosive Detection Canines (ITC Security Partners replacement)
+Rapiscan – Metal Detection and Mobile Trace (previously Safran Morpho)
+Broadband Discovery Systems- Metal Detection
+Qylur – Security Screening
+
+Incident Management/Reporting:
+Lauren Innovations – Incident Management
+ISS 24/7 – Incident Reporting and Management
+
+Medical:
+Tramedic – Medical Kit
+
+Monitoring:
+Babel Street – Social Media Monitoring
+Avigilon – Surveillance
+Radiance Technologies, Inc – Alert Tool
+Quantum Secure – Access Management
+ -->
+
+
+
+<div class="flex-tablewrap">
+
+  <div class="f-row" style="border-color: transparent;">
+    <div class="f-cell category">
+      <p>
+        <strong>Please select a category to scroll to it: </strong>
+        <span style="font-weight: normal">
+          <select size="1" id="cat_select" name="category">
+            <option value=""> - Select Category - </option>
+            <option value="detection">Detection</option>
+            <option value="incidentmr">Incident Management/Reporting</option>
+            <option value="medical">Medical</option>
+            <option value="monitoring">Monitoring</option>
+          </select>
+          <input class="submit_box" type="submit">
+        </span>
+      </p>
+
+    </div>
+  </div>
+
+<!-- ===============[DETECTION]==================== -->
+  <div id="detection" class="f-row" style="border-color: transparent;">
+    <div class="f-cell category">
+        <h2>Detection</h2>
+    </div>
+  </div>
+    <div class="f-row">
+      <div id="" class="f-cell">
+                <!-- Dont forget to change id and "for" in label -->
+            <div class="imgholder"><img alt="Cleveland Electric Laboratories" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/cel.jpg" ></div>
+            <br>
+            <input type="checkbox" class="read-more-state" id="slot_2">
+            <div class="read-more-wrap">
+              <h3>FiberStrike®<sup>TM</sup></h3>
+                <h4>Intrusion detection sensors</h4>
+              <p class="read-more-target">
+                FiberStrike® fiber optic interlock switches are a solution created for intrusion detection at access portals such as doorways, vaults, hatchways, manholes and hand-holes. FiberStrike® will detect and locate attempts to cut, break, open, tamper, or intrude into integrated areas.  Additionally, sensors are passive and do not require power at the switch. The system can network sensors over non-conductive optical fiber into a single monitoring system that can be tens of kilometers removed from the sensing area.  The FiberStrike® system includes patented fiber optic sensors, software, and an interrogator capable of integrating surveillance technology into the intrusion detection system. 
+                <br><br>The FiberStrike® System was evaluated by a select group of subject matter experts (SMEs) from the sports security domain. This group consisted of professionals from public safety, sports and athletic facility operations, and information technology. The collective group of SMEs had a base of experience that encompassed collegiate and professional sports, and major event safety and security operations.
+                <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=78256">Technical Report - FiberStrike®</a>
+              </p>
+            </div>
+            <label for="slot_2" class="read-more-trigger"></label>
+      </div>
+        <div id="" class="f-cell">
+                  <!-- Dont forget to change id and "for" in label -->
+              <div class="imgholder"><img alt="Passport_Long" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Passport_Long.png" ></div>
+              <br>
+              <input type="checkbox" class="read-more-state" id="slot_1">
+              <div class="read-more-wrap">
+                <h3>SmartShield<sup>TM</sup></h3>
+                  <h4>Radiation Detection</h4>
+                <p class="read-more-target">
+                  The SmartShieldTM system is designed to detect radiological threats. The system provides an interface for the G300 gamma radiation detector and smartphone technology, supporting both local and wide-area networking functionality. The SmartShieldTM product has three components: a hand held or belt clipable sized gamma radiation detector, a smart phone with embedded software, and a Base Control Unit (BCU) laptop that runs SmartShieldTM and links individual detectors to a single platform.
+                  <br /><br />
+                  The SmartShieldTM system was evaluated by a select group of subject matter experts (SMEs) from the sports security and radiological response domains. The group consisted of professionals from public safety, nuclear operations, emergency management and radiological response. The collective group of SMEs had a base of experience that encompassed sporting and major event safety and security operations.
+                  <br /><br />
+                  <a href="https://forms.usm.edu/ncs4/view.php?id=76814">Technical Report - SmartShieldTM</a>
+                </p>
+              </div>
+          <label for="slot_1" class="read-more-trigger"></label>
+        </div>
+
+    </div>
+    <div class="f-row">
+          <div id="" class="f-cell">
+                    <!-- Dont forget to change id and "for" in label -->
+                <div class="imgholder"><img alt="VWK9" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/itc.jpg" ></div>
+                <input type="checkbox" class="read-more-state" id="slot_3">
+                <div class="read-more-wrap">
+                  <h3>Vapor Wake® Explosive Detection Canines</h3>
+                  <h4>Explosive Detection Canines (ITC Security Partners replacement)</h4>
+                  <p class="read-more-target">
+                    ITC Vapor Wake® Canines and Handlers offer mobile explosive detection teams for sport events and other large gatherings of people. Unlike traditional explosive detection canines which smell point sources, Vapor Wake® canines are trained to survey the air to detect and follow the “wake” left behind by explosives. Vapor Wake® is a patented technology, patent number 8931327, developed by Auburn University.
+                    <br><br>Specific capabilities and functions of Vapor Wake® canines were observed around the three functional areas of Guest Experience, Operational Performance and Efficiency, and Range of Detection Capabilities. The evaluation was conducted by a team of sport security professionals assembled together at AMK9 Academy and a major sporting event. See the full NCS4 report for a complete breakdown and analysis, as well as evaluator comments and suggestions.
+                    <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=44045">Technical Report – Vapor Wake®</a>
+                  </p>
+                </div>
+            <label for="slot_3" class="read-more-trigger"></label>
+          </div>
+          <div id="" class="f-cell">
+                    <!-- Dont forget to change id and "for" in label -->
+                <div class="imgholder"><img alt="Rapiscan" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/rapiscansystems_logo.png" ></div>
+                <br>
+                <input type="checkbox" class="read-more-state" id="slot_4">
+                <div class="read-more-wrap">
+                  <h3>Metor 6WP Walk Through Metal Detector (WTMD)</h3>
+                  <h4>Metal Detection and Mobile Trace (previously Safran Morpho)</h4>
+                  <p class="read-more-target">
+                    The Metor 6WP WTMD is manufactured by Rapiscan Systems and is used in security screening applications such as airport security, correctional facilities, government buildings, and public events.
+                    <br><br>Specific functions and features of this product were observed around the four functional areas of Physical Properties, Installation, Operational Capabilities, and Other Options, and evaluated by a team of sport security professionals assembled together at a major professional sporting event. See the full NCS4 report for a complete breakdown and analysis, as well as evaluator comments and suggestions.
+                    <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=37518">Technical Report - Rapiscan Systems (PDF)</a>
+                  </p>
+                </div>
+                <label for="slot_4" class="read-more-trigger"></label>
+          </div>
+      </div>
+      <div class="f-row">
+          <div id="" class="f-cell">
+                    <!-- Dont forget to change id and "for" in label -->
+                <div class="imgholder"><img alt="Broadband Discovery Systems" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/bds.png" ></div>
+                <br>
+                <input type="checkbox" class="read-more-state" id="slot_5">
+                <div class="read-more-wrap">
+                  <h3>RONIN Threat Detection Platform - Metal Detection</h3>
+                  <h4>Metal Detection</h4>
+                  <p class="read-more-target">
+                    RONIN Threat Detection Platform
+                    The RONIN Threat Detection Platform is a smart walk through metal detector offering a threat analytics platform, software dashboard, location specific threat detection, reduced operational costs and high-volume patron throughput. Non-invasive passive scanning automatically pinpoints the location of a threat item on the patron’s front side, backside, bag or cavity; even when in a group. Data driven software based alerts provide assessment and classification Intel of detected threat event and can be pushed over the cloud to smart phone, tablet, or desktop. RONIN also supports multi-sensor fusion and assessments from sensor types such as seismic, acoustic, RF, ultrasound, thermal, RADAR, millimeter wave, chemical detectors, biometrics and more.
+                    <br><br>The RONIN Threat Detection Platform was evaluated by a select group of subject matter experts (SMEs) from the sports security domain. This group consisted of professionals from public safety, facility operations and emergency management. The collective group of SMEs had a base of experience that encompassed collegiate and professional sporting and major event safety and security operations.
+                    <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=69030">Technical Report – RONIN Threat Detection Platform</a>
+                  </p>
+                </div>
+            <label for="slot_5" class="read-more-trigger"></label>
+          </div>
+          <div id="" class="f-cell">
+                    <!-- Dont forget to change id and "for" in label -->
+                <div class="imgholder"><img alt="Qylur" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/qylur.png" ></div>
+                <br>
+                <input type="checkbox" class="read-more-state" id="slot_6">
+                <div class="read-more-wrap">
+                  <h3>Qylatron Entry Experience Solution – Security Screening</h3>
+                  <h4>Security Screening</h4>
+                  <p class="read-more-target">
+                    Qylur Security Systems is a US DHS Safety Act designated company and the manufacturer of the Qylatron Entry Experience Solution, a fully integrated security screening solution designed for a wide range of applications such as military and government installations, event venues, and other venues of mass gathering.
+                    <br><br>This product was evaluated around eight functional areas including Core Security & Detection Capabilities and Serviceability. Most functions performed at or above the levels considered to fully meet each requirement. See the full NCS4 report for a complete breakdown and analysis, as well as evaluator comments and suggestions.
+                    <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=37982">Technical Report - Qylur Security Systems (PDF)</a>
+                  </p>
+                </div>
+                <label for="slot_6" class="read-more-trigger"></label>
+          </div>
+    </div>
+
+
+  <!-- ===============[INCIDENT MANAGEMENT/REPORTING]==================== -->
+    <div id="incidentmr" class="f-row" style="border-color: transparent;">
+      <div class="f-cell category">
+          <h2>Incident Management/Reporting</h2>
+      </div>
+    </div>
+    <div class="f-row">
+        <div id="" class="f-cell">
+                  <!-- Dont forget to change id and "for" in label -->
+              <div class="imgholder"><img alt="Lauren Innovations" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/lauren-innovations-logo_0.png" ></div>
+              <br>
+              <input type="checkbox" class="read-more-state" id="slot_7">
+              <div class="read-more-wrap">
+                <h3>NaviGate – Incident Management</h3>
+                  <h4>Incident Management</h4>
+                <p class="read-more-target">
+                  NaviGate is a web-based system manufactured by Lauren Innovations that can be used to collect, manage and apply an organization’s unique critical information. NaviGate has the US DHS Safety Act Designation qualifying it as an Anti-Terrorism Level Technology.
+                  <br><br>The evaluation requirements centered around functional areas such as Incident management and Learning management. This product performed at or above the levels considered, by the evaluators, to fully meet each requirement. See the full NCS4 report for a complete breakdown and analysis, as well as evaluator comments and suggestions.
+                  <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=41526">Technical Report - Navigate (PDF)</a>
+                </p>
+              </div>
+          <label for="slot_7" class="read-more-trigger"></label>
+        </div>
+        <div class="f-cell filler">
+          &nbsp;
+        </div>
+        <!-- <div id="" class="f-cell">
+
+              <div class="imgholder"><img alt="ISS 24/7" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Passport_Long.png" ></div>
+              <br>
+              <input type="checkbox" class="read-more-state" id="slot_8">
+              <div class="read-more-wrap">
+                <h3> - </h3>
+                  <h4>Incident Reporting and Management</h4>
+                <p class="read-more-target">
+                  ----
+                  <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=">Technical Report -</a>
+                </p>
+              </div>
+              <label for="slot_8" class="read-more-trigger"></label>
+        </div> -->
+    </div>
+
+
+
+
+
+      <!-- ===============[MEDICAL]==================== -->
+    <div id="medical" class="f-row" style="border-color: transparent;">
+      <div class="f-cell category">
+          <h2>Medical</h2>
+      </div>
+    </div>
+        <div class="f-row">
+            <div id="" class="f-cell">
+                      <!-- Dont forget to change id and "for" in label -->
+                  <div class="imgholder"><img alt="Tramedic" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/tramedic_logo_copy_0.png" ></div>
+                  <br>
+                  <input type="checkbox" class="read-more-state" id="slot_9">
+                  <div class="read-more-wrap">
+                    <h3>Griffin Logistics Tramedic<sup>TM</sup> Medical Kit</h3>
+                  <h4>Medical Kit</h4>
+                    <p class="read-more-target">
+                      Griffin Logistics provides comprehensive solutions to a broad range of medical, disaster relief, and humanitarian aid initiatives worldwide. Medical response teams are an important part of event operations planning and risk management. The goal of TRAMEDIC™ is real life saving treatments in regular people’s hands because sometimes injuries are so serious you don’t have time to wait for help. TRAMEDIC™ by “incorporating a mix of intuitive products, simple instructions and effective training videos to ensure your organization are prepared for the worst.”
+                      <br><br>TRAMEDIC™ was evaluated by a select group of subject matter experts from the sports security management domain. This group consisted of professionals from law enforcement, public safety and emergency medical services. The evaluation process was divided into three separate segments, Training Portal, Feasibility, and Kit Contents and Instructions. See the full NCS4 report for a complete breakdown and analysis, as well as evaluator comments and suggestions.
+                      <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=36920">Technical Report - Tramedic™ Medical Kit </a>
+                    </p>
+                  </div>
+              <label for="slot_9" class="read-more-trigger"></label>
+            </div>
+            <div class="f-cell filler">
+              &nbsp;
+            </div>
+        </div>
+
+
+
+
+  <!-- ===============[MONITORING]==================== -->
+  <div id="monitoring" class="f-row" style="border-color: transparent;">
+  <div class="f-cell category">
+      <h2>Monitoring</h2>
+  </div>
+  </div>
+      <div class="f-row">
+        <div id="" class="f-cell">
+                  <!-- Dont forget to change id and "for" in label -->
+              <div class="imgholder"><img alt="Babel Street" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/babel_street.jpg" ></div>
+              <br>
+              <input type="checkbox" class="read-more-state" id="slot_10">
+              <div class="read-more-wrap">
+                <h3>Babel X Platform</h3>
+                  <h4>Social Media Monitoring</h4>
+                <p class="read-more-target">
+                  Babel Street, specifically Babel X, is a cloud based collection, search, and analytics platform which monitors publicly available open source data on the web, deep and dark web, and social and commercial media sites. Babel X’s multi-lingual and geo-enabled capabilities have been designed to meet the needs of teams, leagues, venues and a range of customers by fully leveraging Publicly Available Information. Babel X generates real-time, actionable intelligence by persistently monitoring and simultaneously analyzing multiple data sources through advanced statistical, linguistic, and crowd sourcing techniques.
+                  <br><br>The Babel X Platform was evaluated by a select group of subject matter experts (SMEs) from the sports security and crisis management domain. This group consisted of professionals from public safety, facility operations and crisis management. The collective group of SMEs had a base of experience that encompassed collegiate and professional sporting and major event safety and security operations.
+                  <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=50634">Technical Report – Babel X Platform</a>
+                </p>
+              </div>
+          <label for="slot_10" class="read-more-trigger"></label>
+        </div>
+        <div id="" class="f-cell">
+                  <!-- Dont forget to change id and "for" in label -->
+              <div class="imgholder"><img alt="Avigilon" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/avigilon_logos.png" ></div>
+              <br>
+              <input type="checkbox" class="read-more-state" id="slot_11">
+              <div class="read-more-wrap">
+                <h3>Avigilon</h3>
+                  <h4>Surveillance</h4>
+                <p class="read-more-target">
+                  The Avigilon High Definition Video System represents the next important step in delivering high quality, high resolution images for detection and forensic purposes in a security environment. These systems not only capture video images but also provide enhanced detailed information on objects, persons, and vehicles within the field of view of the cameras.
+                  <br><br>This product was observed around four functional areas including Capability, Usability, Deployability, and Maintainability. See the full NCS4 report for a complete breakdown and analysis, as well as evaluator comments and suggestions.
+                  <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=39613">Technical Report - Avigilon (PDF)</a>
+                </p>
+              </div>
+              <label for="slot_11" class="read-more-trigger"></label>
+        </div>
+      </div>
+      <div class="f-row">
+        <div id="" class="f-cell">
+                  <!-- Dont forget to change id and "for" in label -->
+              <div class="imgholder"><img alt="Radiance Technologies, Inc" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/radiance_technologies.png" ></div>
+              <br>
+              <input type="checkbox" class="read-more-state" id="slot_12">
+              <div class="read-more-wrap">
+                <h3>Force Protection Alert Tool (FPAT)</h3>
+                  <h4>Alert Tool</h4>
+                <p class="read-more-target">
+
+                   The Force Protection Alert Tool is under development by Radiance Technologies Inc. The FPAT is an outgrowth of previous research for a system designed to provide threat alerts for military applications. Radiance Technologies is developing private sector applications such as sports and special events.
+                  <br><br>This product was observed and evaluated around the two functional areas of Alerting and Usability. The system’s ability to trigger alerts with respect to a defined criterion and in a defined geographical area were very valuable enhancements to situational awareness. See the full NCS4 report for a complete breakdown and analysis, as well as evaluator comments and suggestions.
+                  <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=38684">Technical Report - Radiance Technologies (PDF)</a>
+                </p>
+              </div>
+          <label for="slot_12" class="read-more-trigger"></label>
+        </div>
+        <div id="" class="f-cell">
+                  <!-- Dont forget to change id and "for" in label -->
+              <div class="imgholder"><img alt="Quantum Secure" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/quantum_secure.png" ></div>
+              <br>
+              <input type="checkbox" class="read-more-state" id="slot_13">
+              <div class="read-more-wrap">
+                <h3>SAFE Sports and Events Access Manager</h3>
+                  <h4>Access Management</h4>
+                <p class="read-more-target">
+                  Quantum Secure’s SAFE Sports and Events Access Manager enables secure and rapid entry to stadiums or other secure venues providing a high-quality, high-security customer experience for temporary or limitedengagement events. This mobile-app solution removes the need to rely on clipboards and lists to manage contractors, vendors, volunteers and thousands of other non-ticket holders who need temporary access to venues. The solution also integrates with IT systems and multiple handheld devices for swift, accurate real-time validation and immediate onboarding and provisioning for a variety of identity types based on each identity’s appropriate access permissions. Additionally, the solution records identity access logs to track key operational and security metrics and streamline compliance processes.
+                  <br><br>The SAFE Sports and Events Access Manager was evaluated by a select group of subject matter experts (SMEs) from the sports security domain. This group consisted of professionals from public safety, facility operations and emergency management. The collective group of SMEs had a base of experience that encompassed collegiate and professional sporting and major event safety and security operations.
+                  <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=73873">Technical Report - SAFE Sports and Events Access Manager</a>
+                </p>
+                <a name="hoverfly">&nbsp;</a>
+              </div>
+              <label for="slot_13" class="read-more-trigger"></label>
+        </div>
+      </div>
+      <div class="f-row">
+          <div id="" class="f-cell">
+                    <!-- Dont forget to change id and "for" in label -->
+                <div class="imgholder"><img alt="Hoverfly" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/HoverflyLogo2014WhiteBack__1_.jpg" ></div>
+                <br>
+                <input type="checkbox" class="read-more-state" id="slot_14">
+                <div class="read-more-wrap">
+                  <h3>LiveSky<sup>TM</sup> Secure Plus Tether-Powered UAS</h3>
+                <h4>UAS Surveillance</h4>
+                  <p class="read-more-target">
+                    The LiveSky Tether-Powered Unmanned Aerial System (UAS) is next generation aerial technology providing persistent “eyes in the sky” observation to monitor and deliver actionable intelligence to all stakeholders. Ideal for intelligence, surveillance and reconnaissance (ISR) operations where there are mass gatherings of people, LiveSky features unlimited flight time, simple 5-button operation, precision landing and network interoperability for distributed real time video feeds. LiveSky uses high definition electro-optical pan, tilt, zoom and infrared cameras to provide a persistent aerial view at up to 200’, allowing safety and security personnel to see danger from vantage points that were not available before.
+                   <br><br>
+                  The LiveSky Secure Plus Tether-Powered UAS was evaluated by a select group of subject matter experts (SMEs) from the sports security domain. This group consisted of professionals from public safety, sports and athletic facility operations, and information technology. The collective group of SMEs had a base of experience that encompassed collegiate and professional sports, and major event safety and security operations.
+                  <br><br><a href="https://forms.usm.edu/ncs4/view.php?id=93494">Technical Report - Hoverfly Technologies</a>
+                  </p>
+                </div>
+            <label for="slot_14" class="read-more-trigger"></label>
+          </div>
+          <div class="f-cell filler">
+            &nbsp;
+          </div>
+      </div>
+<br><br><br><br>
+
+</div>
+
+
+<script type="text/javascript">
+  $(document).on('click', 'input.submit_box', function (event) {
+      event.preventDefault();
+      var selected_index = $("#cat_select option:selected").val();
+      console.log(selected_index);
+
+      if( $('#'+selected_index).length ){ //make sure a selection is made first
+        $('html, body').animate({
+          scrollTop: $('#'+selected_index).offset().top
+        }, 500);
+      }
+      else{
+        alert("Please select a category.");
+      }
+
+      return false;
+  });
+
+</script>

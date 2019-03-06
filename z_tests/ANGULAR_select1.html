@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<p>Select a car:</p>
+
+<select ng-model="select" ng-options="y for y in tags">
+</select>
+
+<h1>You selected: {{select}}</h1>
+<div ng-repeat="x in cars" ng-if="x.tag.includes(select) || select == tags.NO_FILTER || select == null">{{x}}</div>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.tags = {
+    NO_FILTER: '(NO FILTER)',
+    ACCESS_CONTROL: 'Access Control',
+    COMMUNICATIONS: 'Communications',
+    EVENT_STAFFING: 'Event Staffing',
+  };
+    $scope.cars = [
+        {model : "Ford Mustang", color : "red", tag: [$scope.tags.COMMUNICATIONS] },
+        {model : "Fiat 500", color : "white", tag: [$scope.tags.ACCESS_CONTROL,$scope.tags.COMMUNICATIONS]},
+        {model : "Volvo XC90", color : "black", tag: [$scope.tags.ACCESS_CONTROL,$scope.tags.COMMUNICATIONS]},
+        {model : "badcar", color : "blue", tag: [$scope.tags.EVENT_STAFFING]}
+    ];
+});
+</script>
+
+<p> Quick and dirty example of angular filtering elements with a select option</p>
+
+</body>
+</html>

@@ -1,0 +1,338 @@
+<style><!--
+    /* PORTALS */
+    
+    ._Portals {
+        text-align: center;
+        background-color: transparent;
+        max-height: 9.5em;
+        /* min-width: 9em; */
+        margin: auto;
+        width: auto;
+        height: auto;
+      }
+    
+      .change_td {
+        height: 27vh;
+        width: 25vw;
+        text-align: center;
+      }
+    
+      .Portal-Spacer {
+        border: none;
+        max-width: 90%;
+        height: 11em;
+        /*66vh extended*/
+        /*PX:  517px extended, 217px else*/
+        background-image: url(https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Backgrounds/NCS4%20Website%20new%20v2.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center top;
+        background-size: cover;
+        margin-top: -1px;
+        /*hides mystery border*/
+        transition: height 1s ease-in-out;
+        margin: auto;
+      }
+    
+      .portal_link {
+        position: relative;
+        z-index: 0;
+      }
+    
+      .portal_map_L {
+        visibility: hidden;
+        opacity: 0;
+        display: table-cell;
+        position: absolute;
+        z-index: 1;
+        margin-left: -6%;
+        margin-top: 2%;
+        height: auto;
+        width: 12%;
+        transition: visibility 0s, opacity 0.5s linear;
+        text-align: left;
+        color: black;
+        font-size: 1em;
+      }
+    
+      .portal_map_R {
+        visibility: hidden;
+        opacity: 0;
+        display: table-cell;
+        position: absolute;
+        z-index: 1;
+        margin-left: -31%;
+        margin-top: 2%;
+        height: auto;
+        width: 12%;
+        transition: visibility 0s, opacity 0.5s linear;
+        text-align: left;
+        color: black;
+        font-size: 1em;
+      }
+    
+      td.portal_link:hover+td.portal_map_L,
+      td.portal_link:hover+td.portal_map_R {
+        visibility: visible !important;
+        opacity: 1;
+      }
+    
+      td.portal_map_L:hover,
+      td.portal_map_R:hover {
+        visibility: visible !important;
+        opacity: 1;
+      }
+    
+      .portal_map_L a,
+      .portal_map_R a {
+        font-size: 1em;
+        text-decoration: none;
+      }
+    
+      .choose_portal_text {
+        font-size: 2em;
+        margin-top: 24px;
+        margin-bottom: -16px;
+        text-align: center;
+        font-weight: bold;
+        color: #ebba3a;
+      }
+    
+      .Portal_Info {
+        display: none;
+        position: absolute;
+        bottom: 4.6em;
+        left: 7em;
+        border-radius: 15px;
+        border: 1px solid grey;
+      }
+    
+      .Portal_Info::before {
+        content: "LEARN MORE";
+      }
+      /*animation variables*/
+    
+      #portal_area {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+      }
+    
+      #portal_area td {
+        text-align: center;
+        width: 13%;
+        /* padding-left: 3.5%;
+           padding-right: 3.5%; */
+      }
+    
+      #panel {
+        display: none;
+        position: relative;
+        opacity: 0;
+        height: 0;
+        transition: all 1s ease-in-out;
+      }
+    
+      #p_info {
+        position: relative;
+        top: 0px;
+        transition: all 1s ease-in-out;
+      }
+    
+      #p_header {
+        text-align: center;
+        font-size: 1.7em;
+      }
+    
+    
+    /* SLIDER 1 (HOMESLIDER) */
+        .HOMESLIDES_SLIDER .my-slider {
+          text-align: center;
+        }
+      
+        .HOMESLIDES_SLIDER .my-slider img {
+          margin: auto;
+          width:100%;
+          height:auto;
+          max-width:1500px;
+        }
+      
+        .HOMESLIDES_SLIDER .tns-controls button {
+          position: absolute;
+          background-color: transparent;
+          color: white;
+          border: transparent;
+          height: 100%;
+          width: 17%;
+          font-size: 7em;
+          font-weight: bolder;
+          z-index: 3;
+        }
+      
+        .HOMESLIDES_SLIDER .tns-controls button:first-child {
+          left: 0;
+          bottom: 0;
+          background: linear-gradient(to right, black, transparent);
+        }
+      
+        .HOMESLIDES_SLIDER .tns-controls button:last-child {
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(to left, black, transparent);
+        }
+      
+        .HOMESLIDES_SLIDER .tns-controls button:focus {
+          outline: none;
+        }
+      
+        .HOMESLIDES_SLIDER .tns-nav {
+          position: absolute;
+          bottom: 10px;
+          z-index: 3;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      
+        .HOMESLIDES_SLIDER .tns-nav button {
+          padding: 4px;
+          margin-left: 4px;
+          margin-right: 4px;
+          border-radius: 10px;
+          background-color: white;
+          padding: 6px;
+          border: 1px solid black;
+        }
+      
+        .HOMESLIDES_SLIDER .tns-nav button.tns-nav-active {
+          background-color: #ebba3a;
+        }
+      
+        .HOMESLIDES_SLIDER .tns-nav button:focus {
+          outline: none;
+        }
+      
+        .HOMESLIDES_SLIDER .ContentItemHtml.Tiny-Slider_Carousel {
+          margin-top: 0;
+        }
+    
+    
+        /* SLIDER 2 (ALLIANCE SLIDER) */
+    
+        .ALLIANCE_SLIDER {
+          position: relative; 
+          width: 70%; 
+          margin: auto;
+          max-width: 1200px;
+        }
+        .ALLIANCE_SLIDER .my-slider2 {
+            text-align: center;
+            width: 90%;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+        }
+        .ALLIANCE_SLIDER .tns-inner {
+          background-color:white;
+          border-top: 50px solid white;
+          border-bottom: 12px solid white;
+        }
+        .ALLIANCE_SLIDER .tns-inner::after {
+            content: "SPORTS AND ENTERTAINMENT ALLIANCE PARTNERS";
+            position: absolute;
+            z-index: 1;
+            top: 6px;
+            left: 2.5%;
+            width: 95%;
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: bold;
+            color: #424242;
+        }
+    
+        .ALLIANCE_SLIDER .tns-controls button {
+          position: absolute;
+          background-color: transparent;
+          color: white;
+          border: transparent;
+          height: 100%;
+          width: 17%;
+          font-size: 5em;
+          font-weight: bolder;
+          z-index: 3;
+        }
+    
+        .ALLIANCE_SLIDER .tns-controls button:first-child {
+          left: -7%;
+          width: 7%;
+          bottom: 0;
+          min-width: 30px;
+          background: black;
+        }
+      
+        .ALLIANCE_SLIDER .tns-controls button:last-child {
+          right: -7%;
+          width: 7%;
+          bottom: 0;
+          min-width: 30px;
+          background: black;
+          /* background: linear-gradient(to left, black, transparent); */
+        }
+      
+        .ALLIANCE_SLIDER .tns-controls button:focus {
+          outline: none;
+        }
+      
+        .ALLIANCE_SLIDER .tns-controls button:focus {
+            outline: none;
+        }
+    
+        .ALLIANCE_SLIDER .tns-nav {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 43%;
+            z-index: 3;
+        }
+    
+        .ALLIANCE_SLIDER .tns-nav button {
+            padding: 4px;
+            margin-left: 4px;
+            margin-right: 4px;
+            border-radius: 10px;
+            background-color: white;
+            padding: 6px;
+            border: 1px solid black;
+        }
+    
+        .ALLIANCE_SLIDER .tns-nav button.tns-nav-active {
+            background-color: #28b0da;
+        }
+    
+        .ALLIANCE_SLIDER .tns-nav button:focus {
+            outline: none;
+        }
+    
+        .ALLIANCE_SLIDER .my-slider2 img {
+            max-height: 93px;
+            max-width: 195px;
+            height: auto;
+            width: auto;
+            display: block;
+            margin: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+            /* border: 1px solid black; */
+        }
+        .ALLIANCE_SLIDER .my-slider2 img.small {
+            max-width:135px;
+        }
+    
+        @media (max-width: 600px) {
+          .ALLIANCE_SLIDER .tns-inner::after {
+            font-size: 1.1em;
+            top: 15px;
+          }
+        }
+    
+      --></style>

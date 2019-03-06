@@ -1,0 +1,11 @@
+.test-class{
+  color: blue;
+  font-family: Helvetica;
+  background-color: grey;
+}
+
+.second-class{
+  @extend .test-class;
+  border-color: white;
+  text-align: center;
+}

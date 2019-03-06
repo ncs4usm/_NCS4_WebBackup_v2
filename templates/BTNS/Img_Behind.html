@@ -1,0 +1,219 @@
+<style type="text/css">
+.flex-table{
+  display: table;
+  width:80%;
+  margin:auto;
+    /* border: 1px dotted grey; */
+}
+.f-row{
+  display: -webkit-flex;
+display: flex;
+  flex-direction: row;
+  width 100%;
+    /* border: 1px dotted grey; */
+}
+.f-col{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px dotted grey; */
+}
+.f-content{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+    /* border: 1px dotted grey; */
+}
+
+.flex-table.sub{
+  width:100%;
+}
+
+/*  */
+
+.spacer{
+  width: 12%;
+}
+.header-button{
+  border-radius:100px;
+  font-weight:bold;
+  border: 3px solid black;
+}
+
+.flat_format{
+  color:#444;
+  cursor:pointer;
+  vertical-align:middle;
+  text-align: center;
+
+  border-radius: 25px;
+  height: 100%;
+  width: 100%;
+  /* max-height: 200px; */
+  max-width: 300px;
+  min-height: 100px;
+  min-width: 200px;
+  position:relative;
+  margin: 0 auto;
+
+  /* background-color:white;
+  border: 2px solid black; */
+  font-size: 1.7em;
+}
+.flat_format img {
+    width: auto;
+    height: auto;
+    max-height: 120px;
+    max-width: 100%;
+    padding:10px;
+}
+
+.flat_format.small{
+  max-height: 150px;
+  max-width: 250px;
+  min-height: 75px;
+  min-width: 175px;
+  height: 250px;
+
+  background-color: rgba(50, 50, 70, 0.6);
+  transition: .3s ease;
+  color: black;
+  border: 1px solid black;
+  /* background-image: url(https://image.shutterstock.com/z/stock-vector-search-and-analysis-of-inform…ommunication-and-services-marketing-and-research-information-521170945.jpg);
+  background-size: cover;
+  background-attachment: fixed; */
+    font-weight: normal;
+}
+.flat_format.small:visited{
+  text-decoration: none;
+}
+.f-content.flat_format.small:hover{
+  background-color: rgba(50, 50, 70, 0);
+transition: .3s ease;
+color: black;
+/* padding: 10px; */
+/* border: 1px solid transparent; */
+    text-decoration: none;
+}
+.f-content.flat_format.small:hover > span {
+    transition: .3s ease;
+    font-size: 1.1em;
+    -webkit-transform: rotate(6deg);
+    -moz-transform: rotate(6deg);
+    -ms-transform: rotate(6deg);
+    -o-transform: rotate(6deg);
+    transform: rotate(6deg);
+
+}
+/* .flat_format.small img {
+  max-height: 80px;
+} */
+.text-area span{
+
+}
+.header{
+  justify-content: center;
+  align-items: center;
+
+  height:3em;
+  font-size: 2.5em;
+  color: #262626;
+  font-weight: bold;
+  border: 2px solid black;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  /* border: 2px solid black; */
+  background: #428bca;
+  background: -moz-linear-gradient(top, #428bca 0%,#f9e77f 51%,#428bca 100%);
+  background: -webkit-linear-gradient(top, #428bca 0%,#f9e77f 51%,#428bca 100%);
+  background: linear-gradient(to bottom, #428bca 0%,#428bca1c 51%,#428bca 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#428bca', endColorstr='#428bca',GradientType=0 );
+}
+
+
+div.f-row{
+  -webkit-transform: translate(0%);
+  -moz-transform: translate(0%);
+  -ms-transform: translate(0%);
+  -o-transform: translate(0%);
+  transform: transform: translate(0%);
+  opacity: 1;
+  transition: .5s ease;
+      padding: 10px;
+}
+.section{
+
+  margin:auto;
+  /* display: none; */
+}
+
+.btns{
+
+}
+
+@media (max-width: 700px){
+  .f-row{
+    flex-direction: column;
+  }
+  .spacer{
+    display:none;
+  }
+}
+
+</style>
+
+
+
+  <div id="section1" class="section margins_wide_content">
+    <!-- <div class="f-row header" style="margin-top:4%">
+        <p>KNOWLEDGE</p>
+    </div> -->
+    <div class="f-row" style="width:80%; margin:auto;">
+      <div class="f-content" style="flex-direction:column;">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;Download a complimentary copy of NCS4’s ‘Safety and Security Best Practice Guides’ or browse through our publication, Gameday Security, to learn about the latest industry trends and issues. Check out NCS4 Connect, our membership program that allows you and your organization to align with other leaders in the spectator sports safety and security industry.</p>
+      </div>
+    </div>
+
+      <div class="f-row btns">
+        <div class="f-content spacer"> &nbsp;</div>
+        <a class="f-content flat_format small" href="https://connect.ncs4.com/sandbox/knowledgeportal/best-practices">
+
+                <span>Best<br>Practices</span>
+
+        </a>
+
+        <a class="f-content flat_format small" href="https://connect.ncs4.com/sandbox/knowledgeportal/gameday-security">
+
+
+                <span>Gameday<br>Security</span>
+
+        </a>
+        <div class="f-content spacer"> &nbsp;</div>
+      </div>
+
+
+
+
+
+      <div class="f-row btns">
+        <div class="f-content spacer"> &nbsp;</div>
+          <a class="f-content flat_format small" href="https://connect.ncs4.com/sandbox/knowledgeportal/analysis-of-incidents">
+
+                  <span>Analysis of<br>Incidents</span>
+          </a>
+
+
+          <a class="f-content flat_format small" href='https://connect.ncs4.com/home'>
+
+                  <span>NCS4 Connect</span>
+
+          </a>
+          <div class="f-content spacer"> &nbsp;</div>
+
+      </div>
+
+  </div>

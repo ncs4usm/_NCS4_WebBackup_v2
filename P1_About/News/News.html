@@ -1,0 +1,38 @@
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
+
+<style>
+  #newsApp div{
+    border: 2px solid black;
+    height: 90vh;
+    width: 90%;
+    border-radius: 5px;
+    overflow: scroll;
+    padding-left: 0;
+  }
+  #newsApp a{
+    display: block;
+    border: 1px solid black;
+    height: auto;
+    width: auto;
+    padding:10px;
+    color: #222222;
+    text-decoration: none;
+  }
+  #newsApp a:hover{
+    background-color: #f7e0a6;
+  }
+  #newsApp a:visited{
+    color: #330d5b;
+  }
+</style>
+<h2>NCS<sup>4</sup> Articles</h2>
+<div id='newsApp' ng-app="myApp" ng-controller="newsCtrl">
+  SEARCH: <input ng-model='sifter' /><p></p>
+  <div >
+      <a ng-repeat="x in newslist | filter : sifter | orderBy: 'date':false:cust_comparator" href={{x.link}}><strong>{{x.date}}</strong>: {{x.title}}</a>
+  </div>
+
+</div>
+
+<!-- <script src="newsList.js"></script> -->

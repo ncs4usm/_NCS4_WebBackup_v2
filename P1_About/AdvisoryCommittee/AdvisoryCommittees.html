@@ -1,0 +1,328 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<style>
+  #tableWrap {
+    opacity: 0;
+    display: table;
+    width: 100%;
+  }
+
+  #tableWrap {
+    opacity: 0;
+    -moz-transition: opacity 0.5s ease;
+    -o-transition: opacity 0.5s ease;
+    -webkit-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+  }
+
+  #tableWrap img {
+    height: auto;
+    margin: 5px;
+    border-radius: 5px;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  #tableWrap h3 {
+    background-color: transparent;
+  }
+
+  .flex-row {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .flex-cell {
+    /*border: 1px dotted grey;*/
+    width: 100%;
+    display: table-cell;
+  }
+  
+  .headtext {
+    width: 100%;
+    font-size: 1.4em;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-shadow: 0px 0px 9px rgb(56, 56, 56);
+    background-color: #e7b02c;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    border-radius: 5px;
+  }
+
+  .header {
+    /*background-image: url();*/
+    /*background-color: lightblue;*/
+  }
+
+  .namescol {
+    width: 40%;
+    /* font-weight: bold; */
+    margin-right: 20px;
+  }
+
+  /* Put in font formatting here */
+
+  .committeetable {
+    /* padding: 20px; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .spacer {
+    /* width: 30%; */
+    display: none !important;
+  }
+
+  .flex-row div {
+    white-space: nowrap;
+  }
+
+  .ct_col {
+    width: 35%;
+    display: block !important;
+  }
+
+  #tableWrap>.flex-row>.flex-cell>.flex-row:nth-child(2n) {
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+  }
+
+  .ct_col:nth-child(2n+1)>.flex-row {
+    margin-right: -40px;
+    margin-left: 40px;
+  }
+
+  /* Targeted Styling =====================*/
+
+  .namescol {
+    width: auto !important;
+  }
+
+  /* .namescol:after {
+    font-weight: normal;
+    content: " - ";
+    margin-right: -.9em;
+  } */
+
+  /*end Targeted Styling ==================*/
+
+  @media(max-width: 1150px) {
+    .spacer {
+      width: 10%;
+    }
+
+    .ct_col {
+      width: 45%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .flex-row {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+
+    .flex-row>.flex-cell>.flex-row>.flex-cell>.flex-row {
+      /*target the innermost row*/
+      -webkit-flex-direction: row;
+      flex-direction: row;
+    }
+
+    .flex-row>.flex-cell>.flex-row>.flex-cell>.flex-row>.flex-cell {
+      /* lol */
+      width: 100%;
+      float: right;
+    }
+
+    .flex-row>.flex-cell>.flex-row>.flex-cell>.flex-row>.flex-cell.committeetable.namescol {
+      float: left;
+    }
+
+    /* .spacer {
+      display: none;
+    } */
+    .ct_col {
+      width: 100%;
+      /* justi */
+    }
+
+    .namescol {
+      margin-left: 5%;
+      /* width: 30%; */
+      /* width: 60% !important; */
+    }
+
+    .placecol {
+      width: 100% !important;
+      /* width: 55% !important; */
+    }
+
+    #tableWrap>.flex-row>.flex-cell>.flex-row:nth-child(2n) {
+      width: 70%;
+      margin: auto;
+      justify-content: center;
+    }
+
+    .ct_col:nth-child(2n+1)>.flex-row {
+      margin-left: initial;
+      margin-right: initial;
+    }
+  }
+
+  .cloak {
+    opacity: 1 !important;
+  }
+
+</style>
+<div ng-app="AdvisoryCommittees" ng-controller="ACctrl">
+  <div ng-show=""><img style="width: 300px; height: auto; display: block; margin: auto;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/Loadingsome.gif"
+      alt="loading" /></div>
+  <!-- this class evaluates to false when angular loads -->
+  <div id="tableWrap" ng-class="{cloak:true}">
+    <div class="flex-row"></div>
+    <div class="flex-row">
+      <!-- INTERCOLLEGIATE -->
+      <div class="flex-cell ">
+        <div class="flex-row" style="padding-bottom: 10px;"><!-- HEADER -->
+          <div class="flex-cell header">
+            <br />
+            <div class="headtext">INTERCOLLEGIATE</div>
+          </div>
+        </div>
+        <div id="IC_" class="flex-row">
+          <div class="flex-cell spacer"></div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in intercollegiate">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 0"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+              <!--<div class="flex-cell committeetable placecol" ng-if="$index%2 == 0">{{x.org}}</div>-->
+            </div>
+          </div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in intercollegiate">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 1"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END INTERCOLLEGIATE -->
+    <div class="flex-row">
+      <!-- INTERSCHOLASTIC -->
+      <div class="flex-cell">
+        <div class="flex-row" style="padding-bottom: 10px;"><!-- HEADER -->
+          <div class="flex-cell header">
+            <br />
+            <div class="headtext">INTERSCHOLASTIC</div>
+          </div>
+        </div>
+        <div id="IS_" class="flex-row">
+          <div class="flex-cell spacer"></div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in interscholastic">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 0"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+            </div>
+          </div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in interscholastic">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 1"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END INTERSCHOLASTIC -->
+    <div class="flex-row">
+      <!-- MARATHON -->
+      <div class="flex-cell">
+        <div class="flex-row" style="padding-bottom: 10px;"><!-- HEADER -->
+          <div class="flex-cell header">
+            <br />
+            <div class="headtext">MARATHON</div>
+          </div>
+        </div>
+        <div id="M_" class="flex-row">
+          <div class="flex-cell spacer"></div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in marathon">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 0"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+              <!-- <div class="flex-cell committeetable placecol" ng-if="$index%2 == 0"></div> -->
+            </div>
+          </div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in marathon">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 1"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+              <!-- <div class="flex-cell committeetable placecol" ng-if="$index%2 == 1"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MARATHON -->
+    <div class="flex-row">
+      <!-- PRIVATE SECURITY -->
+      <div class="flex-cell">
+        <div class="flex-row" style="padding-bottom: 10px;"><!-- HEADER -->
+          <div class="flex-cell header">
+            <br />
+            <div class="headtext">PRIVATE SECURITY</div>
+          </div>
+        </div>
+        <div id="PS_" class="flex-row">
+          <div class="flex-cell spacer"></div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in psecurity">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 0"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+            </div>
+          </div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in psecurity">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 1"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END PRIVATE SECURITY -->
+    <div class="flex-row">
+      <!-- PROFESSIONAL SPORT FACILITIES -->
+      <div class="flex-cell">
+        <div class="flex-row" style="padding-bottom: 10px;"><!-- HEADER -->
+          <div class="flex-cell header">
+            <br />
+            <div class="headtext">PROFESSIONAL SPORT FACILITIES</div>
+          </div>
+        </div>
+        <div id="Pro_" class="flex-row">
+          <div class="flex-cell spacer"></div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in pro">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 0"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+            </div>
+          </div>
+          <div class="flex-cell ct_col">
+            <div class="flex-row" ng-repeat="x in pro">
+              <div class="flex-cell committeetable namescol" ng-if="$index%2 == 1"><strong>{{x.lname}}, {{x.fname}}</strong>
+                - {{x.org}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END PROFESSIONAL SPORT FACILITIES -->
+  </div>
+</div>
+<!-- APP END -->
+<!-- <script src="AdvisoryCommittees.js"></script> -->

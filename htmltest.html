@@ -1,0 +1,64 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<style>
+.fp-aliance div{
+
+}
+</style>
+<div class="AllianceApp" ng-app="AllianceApp" ng-controller="AllianceCtrl">
+    
+</div>
+
+
+<script>
+  app = angular.module('AllianceApp', []); 
+  var companies = [{
+    "name": "Axis Communications",
+    "web": "https://www.axis.com/us/en",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/Axis_logo_rgb.png"
+  }, {
+    "name": "Babel Street",
+    "web": "https://www.babelstreet.com/",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/babel_street_logo.png"
+  }, {
+    "name": "CEIA",
+    "web": "http://www.ceia.net/",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/ceia_logo.png"
+
+  }, {
+    "name": "Dell EMC",
+    "web": "https://www.dellemc.com/en-us/index.htm",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/dell_emc_logo.png"
+
+  }, {
+    "name": "Johnson Controls",
+    "web": "http://www.johnsoncontrols.com/",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/jci_logo.png"
+
+  }, {
+    "name": "Microsoft",
+    "web": "https://www.microsoft.com/en-us/",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/microsoft-logo.png"
+
+  }, {
+    "name": "IDEMIA",
+    "web": "https://www.idemia.com/",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/Idemia_Logo_2000px.jpg"
+
+  }, {
+    "name": "NEC Corporation of America (NEC)",
+    "web": "https://www.necam.com/AdvancedRecognitionSystems/",
+    "logo": "https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/neclogo.png"
+  }];
+
+  let str = '';
+  for(let i=0, len=companies.length; i < len; ++i) {
+    str += `
+    <a href='${companies[i].web}'>
+        <img alt = '${companies[i].name}' src='${companies[i].logo}' />
+    </a>
+    `
+  }
+  document.getElementsByClassName('fp-alliance').innerHTML = str;
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

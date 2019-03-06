@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+  <style>
+    /* Heiarchy */
+    div.readmore {
+
+    }
+    div.readmore_bg {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background-color: rgba(71, 71, 71, 0.44);
+    }
+
+    div.readmore_inner_wrap {
+      background-color: #d4d4d4;
+      border-radius: 8px;
+      border: 2px solid grey;
+      padding: 0px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+
+      max-width: 50em;
+      min-width: 15em;
+      max-height: 63vh;
+      min-height: 10em;
+      margin: 10px;
+      position: relative;
+    }
+
+    div.readmore_content {
+      max-height: 60vh;
+      min-height: 10em;
+      overflow-y: auto;
+      background-color: white;
+    }
+
+    div.readmore_close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      background-color: #2b3d4b;
+      width: 30px;
+      height: 25px;
+      border-radius: 0 5px 0 0 ;
+      display:-webkit-flex;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Controls */
+    div.readmore_close:hover {
+      color: white;
+    }
+
+    div.show_more {
+      display: flex;
+    }
+
+    .stop_scrolling {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Scrollbar */
+    div.readmore_content > div.readmore_content_body {
+      padding: 25px;
+      padding-top: 0px;
+    }
+
+      /* width */
+    div.readmore_content::-webkit-scrollbar {
+        width: 10px;
+    }
+
+      /* Track */
+    div.readmore_content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+      /* Handle */
+    div.readmore_content::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+      /* Handle on hover */
+    div.readmore_content::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <a href="" class="readmore">
+    Read more!
+  </a>
+  <div class="readmore_bg">
+    <div class='readmore_inner_wrap'>
+      <div class="readmore_close">&#10006;</div>
+      <div class="readmore_content">
+        <div class="readmore_content_body">
+          <h2>HEADING </h2>
+          Learn how to integrate information from multiple technology sources with human input for efficient information management that will lead to effective decision making and response management.
+          <br><br>
+          Mike Foynes, Senior Director, Global Security Operations, Microsoft
+          <br><br>
+          Chris Jenkins, Advisory Engineer, Dell Technologies
+          <br><br>
+          Jim Nannini, Vice President, Building Wide Systems Integration Building Solutions, North America
+          Learn how to integrate information from multiple technology sources with human input for efficient information management that will lead to effective decision making and response management.
+          <br><br>
+          Mike Foynes, Senior Director, Global Security Operations, Microsoft
+          <br><br>
+          Chris Jenkins, Advisory Engineer, Dell Technologies
+          <br><br>
+          Jim Nannini, Vice President, Building Wide Systems Integration Building Solutions, North America
+          <h2>HEADING 2</h2>
+          Learn how to integrate information from multiple technology sources with human input for efficient information management that will lead to effective decision making and response management.
+          <br><br>
+          Mike Foynes, Senior Director, Global Security Operations, Microsoft
+          <br><br>
+          Chris Jenkins, Advisory Engineer, Dell Technologies
+          <br><br>
+          Jim Nannini, Vice President, Building Wide Systems Integration Building Solutions, North America
+          Learn how to integrate information from multiple technology sources with human input for efficient information management that will lead to effective decision making and response management.
+          <br><br>
+          Mike Foynes, Senior Director, Global Security Operations, Microsoft
+          <br><br>
+          Chris Jenkins, Advisory Engineer, Dell Technologies
+          <br><br>
+          Jim Nannini, Vice President, Building Wide Systems Integration Building Solutions, North America
+        </div>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <a href="" class="readmore">
+    Read even more!
+  </a>
+  <div class="readmore_bg">
+    <div class='readmore_inner_wrap'>
+      <div class="readmore_close">&#10006;</div>
+      <div class="readmore_content">
+        <div class="readmore_content_body">
+          <!-- CONTENT HERE -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // const readmores = document.getElementsByClassName('readmore');
+    const readmores = $('.readmore')
+    const readmores_text = readmores.next();
+    for(let i = -1, len = readmores.length; ++i < len;) {
+      readmores[i].onclick = e => {
+        e.preventDefault();
+        readmores_text[i].classList.toggle('show_more');
+        $('body').toggleClass('stop_scrolling')
+      }
+      $('.readmore_close')[i].onclick = e => {
+        e.preventDefault();
+        readmores_text[i].classList.toggle('show_more');
+        $('body').toggleClass('stop_scrolling')
+      }
+
+    }
+  </script>
+
+
+  <!-- <script src="http://localhost:3100/livereload.js"></script> -->
+
+
+</body>
+</html>

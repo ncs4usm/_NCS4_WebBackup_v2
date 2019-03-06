@@ -1,0 +1,337 @@
+<style>
+  #content1>.f-col a {
+    background: #e4c060;
+    background: -moz-linear-gradient(left, rgba(228, 196, 117, 1) 1%, rgba(229, 190, 84, 1) 51%, rgb(226, 174, 42) 100%);
+    background: -webkit-linear-gradient(left, rgba(228, 196, 117, 1) 1%, rgba(229, 190, 84, 1) 51%, rgb(226, 174, 42) 100%);
+    background: linear-gradient(to right, rgba(228, 196, 117, 1) 1%, rgba(229, 190, 84, 1) 51%, rgb(226, 174, 42) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e4c475', endColorstr='#e5b029', GradientType=1);
+    color: white;
+    justify-content: center;
+    text-indent: 1.1em;
+  }
+
+  /* #content_SUB a{
+    color: #1b93c3;
+    text-decoration: underline;
+  } */
+
+  #content2>.f-col a {
+    background: rgb(62, 164, 201);
+    background: -moz-linear-gradient(left, rgba(62, 164, 201, 1) 0%, rgba(45, 157, 191, 1) 59%, rgba(14, 124, 152, 1) 100%);
+    background: -webkit-linear-gradient(left, rgba(62, 164, 201, 1) 0%, rgba(45, 157, 191, 1) 59%, rgba(14, 124, 152, 1) 100%);
+    background: linear-gradient(to right, rgba(62, 164, 201, 1) 0%, rgba(45, 157, 191, 1) 59%, rgba(14, 124, 152, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3ea4c9', endColorstr='#1390af', GradientType=1);
+    color: white;
+    justify-content: center;
+    text-indent: 1.1em;
+  }
+
+  .flat_format.small {
+    border-color: #292929 !important;
+  }
+
+  .content_swap {
+    opacity: 1;
+    max-height: 100%;
+    transition: opacity .2s ease;
+  }
+
+  .anim {
+    opacity: 0 !important;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  /* [fader end] */
+
+  .header-button {
+    border-radius: 100px;
+    font-weight: bold;
+    border: 3px solid black;
+  }
+
+  .flat_format {
+    color: #444;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    min-height: 100px;
+    min-width: 200px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 1.7em;
+  }
+
+  .flat_format img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    max-width: 120px;
+    padding: 10px;
+    margin: auto;
+  }
+
+  .flat_format.small:nth-child(-n+1) {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .flat_format.small:not(:nth-last-child(n+2)) {
+    border-radius: 0 0 20px 20px;
+  }
+
+  #content1 a.flat_format {
+    color: #2d2d2d;
+  }
+
+  #content1 a.flat_format:hover {
+    color: #50b0cf;
+  }
+
+  #content2 a.flat_format:hover {
+    color: #eac257;
+  }
+
+  .flex-table {
+    display: table;
+    width: 60%;
+    margin: auto;
+  }
+
+  .f-row {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    width 100%;
+  }
+
+  .f-col {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: column;
+  }
+
+  .f-content {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spacer {
+    width: 12%;
+  }
+
+  .text-area:hover {
+    text-decoration: none;
+  }
+
+  .G {
+    background: rgb(229, 204, 142);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e5cc8e', endColorstr='#e8b220', GradientType=1);
+  }
+
+  .B {
+    background: rgb(117, 196, 216);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#75c4d8', endColorstr='#1b93c3', GradientType=1);
+  }
+
+  div.f-row {
+    padding-bottom: 20px;
+    -webkit-transform: translate(0%);
+    -moz-transform: translate(0%);
+    -ms-transform: translate(0%);
+    -o-transform: translate(0%);
+    transform: translate(0%);
+    opacity: 1;
+    transition: .5s ease;
+    justify-content: center;
+  }
+
+  .section {
+    display: none;
+  }
+
+  /* #content1 > .f-row > */
+
+  .flat_format.small {
+    width: 100%;
+    max-width: none;
+    text-align: left;
+    border: 3px solid #424242;
+    min-height: 3.2em;
+    /* border-radius: 56px;
+  border: 3px solid #424242;
+  align-items: center;
+  justify-content: center;
+  color: #383838;
+  height: 6em;
+  margin-left: .5em;
+  margin-right: .5em; */
+  }
+
+  a.flat_format:hover {
+    text-decoration: none;
+    transition: opacity 1s ease;
+  }
+
+  a.flat_format span {
+    text-indent: 0;
+    padding-left: 22px;
+  }
+
+  .flat_format.small:not(:nth-last-child(1)) {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    .flex-table {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 750px) {
+    .flex-table {
+      width: 90%;
+    }
+    /* .flat_format img {
+    max-width:40px !important;
+  } */
+  }
+
+  @media (max-width: 900px) {
+    .flex-table {
+      width: 75%;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .f-row {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+    .spacer {
+      display: none;
+    }
+  }
+
+</style>
+<br />
+<!-- <div class="f-row" style="width: 80%; margin: auto;">
+  <div class="f-content" style="flex-direction: column;">
+    <p style="font-size: 1.2em; text-indent: 3.5em; margin-left: 3%; margin-right: 3%;">Since 2008, training is a core aspect of our Center. While most of our focus has been on domestic training, we have recently partnered with INTERPOL to expand our training capabilities internationally.</p>
+  </div>
+</div> -->
+<!-- <br />
+<br />
+<br /> -->
+<div class="margins_wide_content flex-table">
+  <div class="f-row">
+    <div class="f-content header-button G flat_format">
+      <div class="f-col sub">
+        <div id="btn1" class="f-col btn_head">
+          <div class="f-content"><img style="max-width: 132px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/TrainingFP/courses_book.png" /></div>
+          <div class="f-content text-area"><span style="color: black;">FEMA/DHS</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="f-content header-button B flat_format">
+      <div class="f-col sub">
+        <div id="btn2" class="f-col btn_head">
+          <div class="f-content"><img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/TrainingFP/Globe_GOLD.png" /></div>
+          <div class="f-content text-area"><span style="color: black;">International</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div id="content1" class="content_swap flex-table margins_wide_content">
+  <div class="f-col">
+    <a href="/trainingportal/fema-dhs/risk-management" class="f-content flat_format small"> <span>AWR-167: Risk Management</span> </a>
+    <a href="/trainingportal/fema-dhs/evacuation" class="f-content flat_format small"> <span>MGT-412: Evacuation</span> </a>
+    <a href="/trainingportal/fema-dhs/incident-management" class="f-content flat_format small"> <span>MGT-404: Incident Management</span> </a>
+    <a href="/trainingportal/fema-dhs/enhanced-incident-management" class="f-content flat_format small"> <span>MGT-440: Enhanced Incident Management</span> </a>
+    <a href="/trainingportal/fema-dhs/risk-management-for-interscholastic-athletics" class="f-content flat_format small"> <span style="font-size: .9em">Risk Management For Interscholastic Athletics (Coming Soon)</span> </a>
+  </div>
+</div>
+<div id="content2" class="content_swap flex-table margins_wide_content anim hide">
+  <div class="f-col"><a href="/trainingportal/international/interpol" class="f-content flat_format small"> <span>Interpol</span> </a> <a href="/trainingportal/international/international-institute-for-counter-terrorism" class="f-content flat_format small"> <span>International Institute for Counter-Terrorism</span> </a>    <a href="/trainingportal/international/strategic-partners" class="f-content flat_format small"> <span>Strategic Partners</span> </a> <a href="/trainingportal/international/resource-links" class="f-content flat_format small"> <span>Resource Links</span> </a></div>
+</div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/bluebird/latest/bluebird.core.min.js"></script> -->
+<script type="text/javascript">
+  // <![CDATA[
+  var key = true;
+  var prev;
+  var anim_class = "anim";
+  var hide_class = "hide"; //CLASS MUST CONTAIN "display: none;""
+  var containers = "content_swap";
+  var container_ids = "content";
+  var button_class = ".btn_head"; //include . for jquery call
+  var anim_length = .2 * 1000; //in seconds
+  containers = document.getElementsByClassName(containers);
+
+
+  //only one allowed on screen at a time
+  function Animate(id, callback) {
+    id = container_ids + id.match(/\d+/)[0];
+    // console.log(id, prev);
+    if (key && id !== prev) {
+      prev = id;
+      key = false;
+
+      //make sure active things are hidden
+      var toggled = "none";
+      for (var i = 0; i < containers.length; i++) {
+        if (!containers[i].classList.contains(anim_class)) {
+          containers[i].classList.add(anim_class);
+          toggled = containers[i];
+        }
+      }
+
+      if (toggled !== "none") setTimeout(function() {
+        toggled.classList.add(hide_class);
+        setTimeout(callback(id), 10);
+      }, anim_length); //amount of anim_class time
+      else callback(id);
+    } else {
+      // console.log("Buttons locked...");
+    }
+  }
+
+  var animateThing = function(id) {
+    var thing = document.getElementById(id);
+    thing.classList.remove(hide_class);
+    setTimeout(function() {
+      document.getElementById(id).classList.remove(anim_class);
+    }, 10);
+    setTimeout(function() {
+      key = true; //unlock buttons
+    }, anim_length + 10); //amount of anim_class time
+  }
+
+
+  $(document).ready(function() {
+    for (var i = 0; i < containers.length; i++) {
+      if (!containers[i].classList.contains(hide_class)) {
+        prev = containers[i].id;
+      }
+    }
+    $(button_class).click(function() {
+      Animate(this.id, animateThing);
+    });
+  });
+  // ]]>
+</script>

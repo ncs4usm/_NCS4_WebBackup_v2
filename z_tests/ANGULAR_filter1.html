@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<input ng-model="sifter"></input>
+
+<ul>
+  <li ng-repeat="x in cars | filter : sifter">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+  $scope.names = [
+      'Jani',
+      'Carl',
+      'Margareth',
+      'Hege',
+      'Joe',
+      'Gustav',
+      'Birgit',
+      'Mary',
+      'Kai'
+  ];
+  $scope.tags = {
+    NO_FILTER: '(NO FILTER)',
+    ACCESS_CONTROL: 'Access Control',
+    COMMUNICATIONS: 'Communications',
+    EVENT_STAFFING: 'Event Staffing',
+  };
+  $scope.cars = [
+      {model : "Ford Mustang", color : "red", tag: [$scope.tags.COMMUNICATIONS] },
+      {model : "Fiat 500", color : "white", tag: [$scope.tags.ACCESS_CONTROL,$scope.tags.COMMUNICATIONS]},
+      {model : "Volvo XC90", color : "black", tag: [$scope.tags.ACCESS_CONTROL,$scope.tags.COMMUNICATIONS]},
+      {model : "badcar", color : "blue", tag: [$scope.tags.EVENT_STAFFING]}
+  ];
+
+});
+</script>
+
+<p>This example allows for sifting through properties. </p>
+<p> It only checks the values: typing in 'model' wont do anything, but 'black' will.</p>
+</body>
+</html>

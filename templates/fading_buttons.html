@@ -1,0 +1,364 @@
+<style>
+/* Gears and bobs */
+    .local-flex{
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      /* align-items: center;
+      justify-content: center; */
+      border: 1px solid black;
+      width: 90%;
+      margin: auto;
+    }
+    .lf-container{
+      /* this property has 'display: block' by default */
+      height: 100px;
+      width: 100px;
+      border: 1px dotted black;
+      margin:auto;
+    }
+    #content1 > .local-flex > .lf-container{
+      background-color: lightblue;
+    }
+    #content2 > .local-flex > .lf-container{
+      background-color: lightgreen;
+    }
+    #content3 > .local-flex > .lf-container{
+      background-color: lightpink;
+    }
+    .content_swap{
+      opacity: 1;
+      max-height:100%;
+      transition: opacity .2s ease;
+    }
+    .anim{
+      opacity: 0 !important;
+    }
+    .hide{
+      display: none !important;
+    }
+/* Styles */
+    button.btns {
+      border: 0;
+      color: #1c93c3;
+      font-size: 1.1em;
+      font-weight: bold;
+      background-color: transparent;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    button.btns:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    button.btns:focus {
+      outline: none;
+      text-decoration: underline;
+    }
+    .btns.active_btn_switch {
+      position: relative;
+      color: black;
+    }
+    .btns.active_btn_switch:after {
+      border-bottom: 3px solid #03A9F4;
+      content: " ";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+</style>
+<div class="fader_wrap1">
+  <div style="text-align:center;">
+    <button id="btn1" class="btns active_btn_switch" type="button">RESEARCH AREAS</button>
+    <button id="btn2" class="btns" type="button">IMPACT AREAS</button>
+    <button id="btn3" class="btns" type="button">EXAMPLE</button>
+  </div>
+
+  <div id="content1" class="content_swap">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+  </div>
+
+
+  <div id="content2" class="content_swap anim hide">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+  </div>
+  <div id="content3" class="content_swap anim hide">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<div class="fader_wrap2">
+  <div style="text-align:center;">
+    <button id="btn1" class="btns active_btn_switch" type="button">OTHER STUFF</button>
+    <button id="btn2" class="btns" type="button">EX2</button>
+  </div>
+
+  <div id="content1" class="content_swap">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+  </div>
+
+  <div id="content2" class="content_swap anim hide">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+    <div class="local-flex">
+      <div class="lf-container"></div>
+    </div>
+  </div>
+</div>
+
+<br> <br>
+
+<div class="fader_wrap3">
+  <div style="text-align:center;">
+    <button id="btn1" class="btns active_btn_switch" type="button">RESEARCH AREAS</button>
+    <button id="btn2" class="btns" type="button">IMPACT AREAS</button>
+    <button id="btn3" class="btns" type="button">EXAMPLE</button>
+  </div>
+
+  <div id="content1" class="content_swap">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+
+    </div>
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+  </div>
+
+
+  <div id="content2" class="content_swap anim hide">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+  </div>
+  <div id="content3" class="content_swap anim hide">
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+    <div class="local-flex">
+      <div class="lf-container"></div>
+      <div class="lf-container"></div>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  //Fader Buttons Overview
+  /*
+    This script allows for creation of single page apps with pages hidden and animated under one or more sections
+    HOW TO USE:
+      -STRUCTURE
+        Each section includes a custom section class name that must be put in the section list variable.  You can change the name of classes or id seeds in the
+        "NAMES"
+  */
+  const ANIM_LENGTH = .2 * 1000; //in seconds: adjust this variable if css changes
+
+  const NAMES = {
+    hbtn_id_seed: "btn",
+    hbtn_class: "btns",
+    container_id_seed: "content",
+    hide_class: "hide",
+    anim_class: "anim",
+    active_class: "active_btn_switch",
+  }
+
+  const SECTION_LIST = ["fader_wrap1", "fader_wrap2", "fader_wrap3"]
+
+  const Sections = (name, prev, prev_btn_id) => {
+    return(
+      {
+        name: name,
+        prev: prev,
+        prev_btn_id: prev_btn_id,
+      });
+  }
+
+  let key = true;
+
+
+  let animateThing = function(section, id){
+    console.log($("." + section.name +" #"+ id)[0])
+      var thing = $("." + section.name +" #"+ id)[0];
+      thing.classList.remove(NAMES.hide_class);
+      setTimeout(function () {
+        thing.classList.remove(NAMES.anim_class);
+      }, 10);
+      setTimeout(function () {
+        key = true; //unlock buttons
+      }, ANIM_LENGTH + 10);  //amount of anim_class time
+  }
+
+  $(document).ready(function (){
+    for(let i = 0, len = SECTION_LIST.length; i < len; i++){
+      const S = Sections(SECTION_LIST[i], null, null);
+      // console.log(S);
+      key = true;
+      const containers = $("." + S.name +" .content_swap");
+      console.log(containers[i].classList);
+      for(let j = 0; j<containers.length; j++){
+        if(!containers[j].classList.contains(NAMES.hide_class)){
+          S.prev = containers[j].id;
+          S.prev_btn_id = NAMES.hbtn_id_seed + containers[j].id.match(/\d+/)[0];
+        }
+      }
+        $("." + S.name +" ."+NAMES.hbtn_class).click(function(){
+            let btn_id = this.id;
+            let id = NAMES.container_id_seed + btn_id.match(/\d+/)[0];
+            if(key && id !== S.prev){
+              // console.log("." + S.name +" #"+S.prev_btn_id,$("." + S.name +" #"+S.prev_btn_id)[0])////////////
+              $("." + S.name +" #"+S.prev_btn_id)[0].classList.remove(NAMES.active_class) // remove class from button
+
+              S.prev_btn_id = btn_id;
+              S.prev = id;
+              key = false;
+
+              //make sure active things are hidden
+              let toggled = "none";
+              for(let i = 0; i<containers.length; i++){
+                if(!containers[i].classList.contains(NAMES.anim_class)){
+                  containers[i].classList.add(NAMES.anim_class);
+                  toggled = containers[i];
+                }
+              }
+              if(toggled !== "none") setTimeout(function(){
+                toggled.classList.add(NAMES.hide_class);
+                // console.log("." + S.name +" #"+S.prev_btn_id,$("." + S.name +" #"+btn_id)[0])//////////
+                $("." + S.name +" #"+btn_id)[0].classList.add(NAMES.active_class) //add class to button
+                setTimeout(animateThing(S, id), 10);
+              }, ANIM_LENGTH); //amount of anim_class time
+              else animateThing(S,id);
+            } else {
+              console.log("Buttons locked...");
+            }
+        });
+
+    }
+  })
+
+</script>
+
+<script src="http://localhost:3100/livereload.js"></script>

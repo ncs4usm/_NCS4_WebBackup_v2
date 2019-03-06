@@ -1,0 +1,125 @@
+<!-- this looks gross by itself but works on ncs4.com's styles -->
+
+<style>
+
+
+/* [FLEX] */
+.flex-tablewrap{
+  display: table;
+  width: 100%;
+  margin: auto;
+}
+.f-col{
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.f-cell{
+  display: table-cell;
+}
+/* [END FLEX] */
+/* .f-cell h3{ */
+label.dropdown_D {
+    position: relative;
+    z-index: 2;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    padding-top: 1em;
+    font-size: 1.3em;
+    background: rgb(240,249,255);
+    background: -moz-linear-gradient(top, rgba(240,249,255,1) 0%, rgba(203,235,255,1) 59%, rgba(161,219,255,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 59%,rgba(161,219,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 59%,rgba(161,219,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 );
+}
+label.dropdown_D:hover{
+  background-color:
+}
+.open-state{
+  display: none;
+}
+.open-target{
+  position:relative;
+  z-index: 1;
+  margin-top: -25px;
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: .25s ease-in-out;
+}
+.open-state:checked ~ .open-target{
+  margin-top:0;
+  opacity: 1;
+  max-height: 60em;
+}
+label.dropdown_D:before{
+  display: inline-block;
+  content: "▼ ";
+  transition: -ms-transform .25s ease-in-out;
+  transition: -webkit-transform .25s ease-in-out;
+  transition: transform .25s ease-in-out;
+}
+.open-state ~ label.dropdown_D:before{
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.open-state:checked ~ label.dropdown_D:before{
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+
+</style>
+
+
+
+  <div class="wrapper">
+    <input type="checkbox" class="open-state" id="content_1">
+    <label class="dropdown_D" for="content_1"> Evaluation Process</label>
+    <div class="open-target">
+
+      <p>Below are the steps included in the evaluation process:</p>
+      <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Candidate product/process screening</p>
+      <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Establish a vendor agreement (based on criteria)</p>
+      <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prepare operational/technical requirements</p>
+      <p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Define evaluation approach/establish weighted criteria (if applicable)</p>
+      <p>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Peer review by industry evaluators with necessary domain knowledge</p>
+      <p>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Execute evaluation/assessment</p>
+      <p>7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Analyze test results</p>
+      <p>8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Produce evaluation report</p>
+    </div>
+
+  </div>
+  <!--  -->
+  <div class="wrapper">
+    <input type="checkbox" class="open-state" id="content_2">
+    <label class="dropdown_D" for="content_2"> Benefits</label>
+    <div class="open-target">
+        <p>There are numerous benefits to having your solutions evaluated through NCS4's National Sports Security Laboratory.</p>
+        <p><strong>Solution Providers</strong></p>
+        <ul>
+          <li>
+            Access to sport venue environment for design, development and testing prior to exposure in an operational environment</li>
+          <li>
+            Market awareness and recognition through NCS4 communication channels</li>
+          <li>
+            Catalyst for continous improvement</li>
+          <li>
+            Connection of solution providers with the sports safety and security industry</li>
+        </ul>
+    </div>
+  </div>
+
+
+  <br><br>
+</div>

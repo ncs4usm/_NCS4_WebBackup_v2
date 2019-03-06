@@ -1,0 +1,71 @@
+<style>
+.FP-Spacer{
+  margin-top: -50px;
+    background-image: url(https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Backgrounds/_NCS4_Website_heroarea.jpg);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position: center top;
+    background-size: cover;
+
+}
+.spacer{
+    line-height: 12vh;
+}
+
+.spanner{
+width: 80vw;
+/*-webkit-animation-duration: 1s;
+-moz-animation-duration: 1s;
+animation-duration: 1s;
+-webkit-animation-delay: .5s;
+-moz-animation-delay: .5s;
+animation-delay: .5s;*/
+}
+#bouncingArrow{
+  position:relative;
+  bottom: 100px;
+  text-align: center;
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  animation-delay: 2s;
+}
+#anchor{
+  position:relative;
+  bottom: 110px;
+}
+#floatybacker{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:10vh;
+  z-index: -1;
+  background-color:#13181e;
+}
+@media only screen and (max-width: 1120px) and (min-width: 767px){
+    .FP-Spacer {
+      height: 100vh !important;
+    }
+}
+</style>
+<div class="floatybacker"></div>
+<section class="FP-Spacer" style="    margin-bottom: 11px;"><span class="spacer"> </span>
+<p style="text-align: center;"><img class="spanner" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Logos/NCS4-Website-LOGO-new.png" /></p>
+</section>
+<!-- <div style="-webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;"
+  class="animated fadeIn"> -->
+<div id="bouncingArrow" class="animated bounce"><a class="anchorLink" href="#anchor" style="-webkit-transition: ease-in-out 1s; -moz-transition: ease-in-out 1s; transition: ease-in-out 1s;"> <img style="height: 4.5em; width: auto;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Logos/double-chevron-down.png" alt="Scroll for More" /> </a></div>
+<!-- </div> -->
+<div id="anchor"></div>
+
+
+<script type="text/javascript">
+console.log(-$(".navbar-nav").height() + "px");
+  $(".floatybacker").css("margin-top", -$(".navbar-nav").height() + "px");
+  $(window).resize(function(){
+    $(".floatybacker").css("margin-top", -$(".navbar-nav").height() + "px");
+    console.log(-$(".navbar-nav").height() + "px");
+  });
+</script>

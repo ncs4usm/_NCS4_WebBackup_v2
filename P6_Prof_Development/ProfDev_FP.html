@@ -1,0 +1,217 @@
+<style type="text/css">
+  .f-col a {
+    background: rgb(66, 131, 174);
+    background: -moz-linear-gradient(left, rgba(66, 131, 174, 1) 0%, rgba(53, 105, 140, 1) 51%, rgba(37, 90, 130, 1) 100%);
+    background: -webkit-linear-gradient(left, rgba(66, 131, 174, 1) 0%, rgba(53, 105, 140, 1) 51%, rgba(37, 90, 130, 1) 100%);
+    background: linear-gradient(to right, rgba(66, 131, 174, 1) 0%, rgba(53, 105, 140, 1) 51%, rgba(37, 90, 130, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#4283ae', endColorstr='#255a82', GradientType=1);
+    color: white;
+    justify-content: center;
+    text-indent: 1.1em;
+  }
+
+  .content_swap {
+    opacity: 1;
+    max-height: 100%;
+    transition: opacity .2s ease;
+  }
+
+  .anim {
+    opacity: 0 !important;
+  }
+
+  .hide {
+    display: none !important;
+  }
+  /* [fader end] */
+
+  .flat_format.small:nth-child(-n+2) {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .flat_format.small:not(:nth-last-child(n+2)) {
+    border-radius: 0 0 20px 20px;
+  }
+
+  .flat_format.small:hover {
+    color: #eac257;
+  }
+
+  .header-button {
+    border-radius: 100px;
+    font-weight: bold;
+    border: 3px solid black;
+  }
+
+  .flat_format {
+    color: #444;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    min-height: 100px;
+    min-width: 200px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 1.7em;
+  }
+
+  .flat_format img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    max-width: 120px;
+    padding: 10px;
+    margin: auto;
+  }
+
+  .flex-table {
+    display: table;
+    width: 60%;
+    margin: auto;
+  }
+
+  .f-row {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    width 100%;
+  }
+
+  .f-col {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: column;
+  }
+
+  .f-content {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spacer {
+    width: 12%;
+  }
+
+  .text-area:hover {
+    text-decoration: none;
+  }
+
+  .G {
+    background: rgb(229, 204, 142);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e5cc8e', endColorstr='#e8b220', GradientType=1);
+  }
+
+  .B {
+    background: rgb(117, 196, 216);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#75c4d8', endColorstr='#1b93c3', GradientType=1);
+  }
+
+  div.f-row {
+    padding-bottom: 20px;
+    -webkit-transform: translate(0%);
+    -moz-transform: translate(0%);
+    -ms-transform: translate(0%);
+    -o-transform: translate(0%);
+    transform: translate(0%);
+    opacity: 1;
+    transition: .5s ease;
+    justify-content: center;
+  }
+
+  .section {
+    display: none;
+  }
+  /* #content1 > .f-row > */
+
+  .flat_format.small {
+    width: 100%;
+    max-width: none;
+    text-align: left;
+    border: 3px solid #424242;
+    min-height: 3.2em;
+    /* border-radius: 56px;
+  border: 3px solid #424242;
+  align-items: center;
+  justify-content: center;
+  color: #383838;
+  height: 6em;
+  margin-left: .5em;
+  margin-right: .5em; */
+  }
+
+  a.flat_format:hover {
+    text-decoration: none;
+    transition: opacity 1s ease;
+  }
+
+  .flat_format.small:not(:nth-last-child(1)) {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    .flex-table {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 750px) {
+    .flex-table {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .flex-table {
+      width: 75%;
+    }
+  }
+}
+@media (max-width: 550px) {
+  .f-row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .spacer {
+    display: none;
+  }
+}
+</style>
+<div class="f-row" style="width: 80%; margin: auto;">
+  <div class="f-content" style="flex-direction: column;">
+    <p style="font-weight: bold;">
+      <br />Professional development is the cornerstone of individual growth and career development. The NCS<sup>4</sup> offers a variety of educational opportunities to promote continuous learning and development through certifications, academic programs,
+      and thought leadership events including annual summits and conferences.</p>
+    <p>In the rapidly evolving field of sports safety and security, human resources are the most valuable asset of any organization. Accumulation of human capital through professional development is critical in meeting the demands of an ever-changing security
+      landscape and maintaining competitive advantage.</p>
+    <p>Our certification programs are designed to help individuals demonstrate expertise, distinguish themselves among other professionals, and prepare for career advancement. Academic programs in Sports Security Management equip students with an understanding
+      of core practices and principles in business, risk management, and emergency planning.</p>
+  </div>
+</div>
+<div id="section1" class="margins_wide_content flex-table">
+  <!-- <div class="f-row header" style="margin-top:4%">
+        <p>KNOWLEDGE</p>
+    </div> -->
+  <div class="f-col">
+    <div class="f-content spacer"> </div>
+    <a class="f-content flat_format small" href="/professionaldevportal/certifications/cssp"> <span>CSSP: Certified Sport Security Professional</span> </a>
+    <a class="f-content flat_format small" href="/professionaldevportal/certifications/csvs"> <span>CSVS: Certified Sport Venue Staff</span> </a>
+    <!-- <a class="f-content flat_format small" href="/professionaldevportal/ncs4events/conference"> <span>Events: Conference</span> </a>
+    <a class="f-content flat_format small" href="/professionaldevportal/ncs4events/summits"> <span>Events: Summits</span> </a> -->
+    <a class="f-content flat_format small" href="/connect"> <span>NCS<sup>4</sup> Connect</span> </a>
+    <a class="f-content flat_format small" href="/professionaldevportal/academics/mba-program"> <span>Academics: MBA Program</span> </a>
+    <a class="f-content flat_format small" href="/professionaldevportal/academics/graduate-certificate"> <span>Academics: Graduate Certificate</span> </a>
+  </div>
+</div>

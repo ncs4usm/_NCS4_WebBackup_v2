@@ -1,0 +1,367 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<style>
+/* Gears and bobs */
+    .local-flex{
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px, 1fr));
+      width: 90%;
+      margin: auto;
+      /* display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      max-width: 90%;
+      width:auto;
+      margin: auto;
+      flex-wrap: wrap; */
+      /* justify-content: space-between; */
+    }
+    .lf-container{
+      /* this property has 'display: block' by default */
+      height: 100px;
+      width: 100px;
+      border: 1px dotted black;
+      margin:auto;
+
+    }
+
+    .content_swap{
+      opacity: 1;
+      /* max-height:100%; */
+      transition: opacity .2s ease;
+    }
+    .anim{
+      opacity: 0 !important;
+    }
+    .hide{
+      display: none !important;
+    }
+/* Styles */
+    .card {
+      flex: 1;
+      background-color: white;
+      max-width: 250px;
+      min-width: 250px;
+      margin:auto;
+    }
+
+    .card.Lrg {
+      width: 400px;
+    }
+    .card > h4 {
+      height: 1.5em;
+      display: flex;
+      align-items: center;
+    }
+    .card > hr {
+      border-bottom: 2px dotted #888;
+    }
+
+    button.btns {
+      position: relative;
+      border: 0;
+      color: #1c93c3;
+      font-size: 1.1em;
+      font-weight: bold;
+      background-color: transparent;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    button.btns:hover {
+      cursor: pointer;
+    }
+    button.btns:focus {
+      border-top: 0;
+      border-bottom: 0;
+    }
+    button.btns:focus::after, button.btns:hover::after {
+      border-bottom: 3px solid #03A9F4;
+      content: " ";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+    }
+    .btns.active_btn_switch {
+      position: relative;
+      color: black;
+    }
+    .btns.active_btn_switch::after {
+      border-bottom: 3px solid #03A9F4;
+      content: " ";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+    }
+    .underlined {
+      position: relative;
+      text-align:center; padding-bottom: 6px;
+    }
+    .underlined::before {
+      content: " ";
+      position: absolute;
+      width: 100%;
+      border-bottom: 3px solid black;
+      bottom: 0;
+      right: 0;
+    }
+
+
+    /* cloak functionality angular */
+    .int-container {
+      opacity: 0;
+      -moz-transition: opacity 0.5s ease;
+      -o-transition: opacity 0.5s ease;
+      -webkit-transition: opacity 0.5s ease;
+      transition: opacity 0.5s ease;
+    }
+    .cloak {
+    opacity: 1
+    }
+
+
+    .popwin {
+      display:block;
+      position:fixed;
+      background-color: lightblue;
+      top: 0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:1000000;
+    }
+    .popwin > .close-popwin {
+      float: right;
+      font-size: 21px;
+      font-weight: bold;
+      line-height: 1;
+      color: #000;
+      text-shadow: 0 1px 0 #fff;
+      opacity: .2;
+    }
+    /* REMOVE BEFORE UPLOAD */
+    .hide {
+      display: none !important;
+    }
+</style>
+
+<div class="IntApp" ng-app="IntApp" ng-controller="IntCtrl">
+  <div ng-show>
+    <img style="width: 300px; height: auto; display: block; margin: auto;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/Loadingsome.gif" alt="loading">
+  </div>
+  <div class="int-container" ng-class="{cloak:true}">
+    <div class="popwin hide">
+      <div class="close-popwin">X</div>
+    </div>
+    <div class="fader_wrap1">
+      <div class="underlined">
+        <button id="btn1" class="btns active_btn_switch" type="button">RESEARCH AREAS</button>
+        <button id="btn2" class="btns" type="button">IMPACT AREAS</button>
+      </div>
+      <!-- RESEARCH AREAS -->
+      <div card-a
+        id="content1"
+        class="content_swap"
+        object="{{ResearchAreas}}"
+      />
+      <!-- <div id="content1" class="content_swap" >
+        <div style="background-color:blue; width: 100%; height: 3px;"></div>
+          <div class="local-flex">
+            <div class="card" ng-repeat="key in ResearchAreas.keys" >
+              <h4 style="font-size:1.0em;">{{ResearchAreas[key].name}}</h4>
+              <hr>
+              <br>
+              <p> {{ResearchAreas[key].text}}</p>
+            </div>
+          </div>
+      </div> -->
+
+      <!-- IMPACT AREAS -->
+      <div id="content2" class="content_swap anim hide">
+        <div class="local-flex">
+          <div class="card" ng-repeat="key in ImpactAreas.keys" >
+            <h4 style="font-size:1.0em;">{{ImpactAreas[key].name}}</h4>
+            <hr>
+            <br>
+            <p> {{ImpactAreas[key].text}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- ////////////////////////////////////////////////////////////////// -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="underlined"></div>
+    <br>
+
+
+    <div class="fader_wrap2">
+
+      <div class="underlined">
+        <button id="btn1" class="btns active_btn_switch" type="button">Groups</button>
+        <button id="btn2" class="btns" type="button">News</button>
+        <button id="btn3" class="btns" type="button">Projects</button>
+        <button id="btn4" class="btns" type="button">People</button>
+      </div>
+    <!-- GROUPS -->
+      <div id="content1" class="content_swap">
+        <div class="local-flex">
+          <div class="card Lrg" ng-repeat="key in Groups.keys">
+            <h4 style="font-size:1.0em;">{{Groups[key].name}}</h4>
+            <hr>
+            <br>
+            <p> {{Groups[key].text}}</p>
+          </div>
+        </div>
+      </div>
+  <!-- NEWS -->
+      <div id="content2" class="content_swap anim hide">
+        <div class="local-flex">
+          <div class="card Lrg" ng-repeat="key in News.keys">
+            <h4 style="font-size:1.0em;">{{News[key].name}}</h4>
+            <hr>
+            <br>
+            <p> {{News[key].text}}</p>
+          </div>
+        </div>
+      </div>
+  <!-- PROJECTS -->
+      <div id="content3" class="content_swap anim hide">
+        <div class="local-flex">
+          <div class="card Lrg" ng-repeat="key in Projects.keys" >
+            <h4 style="font-size:1.0em;">{{Projects[key].name}}</h4>
+            <hr>
+            <br>
+            <p> {{Projects[key].text}}</p>
+            <div ng-if="Projects[key].collaborators && Projects[key].collaborators.length != 0">
+              <h4 >Collaborators:</h4>
+              <div ng-repeat="y in Projects[key].collaborators"> <!-- default is used for searching, shouldnt be displayed -->
+                {{ y.name }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  <!-- PEOPLE -->
+      <div id="content4" class="content_swap anim hide">
+        <div class="local-flex">
+          <div class="card Lrg" ng-repeat="key in People.keys" >
+            <h4 style="font-size:1.0em;">{{People[key].name}}</h4>
+            <hr>
+            <br>
+            <p> {{People[key].text}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> <!-- end app -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  //Fader Buttons Overview
+  /*
+    This script allows for creation of single page apps with pages hidden and animated under one or more sections
+    HOW TO USE:
+      -STRUCTURE
+        Each section includes a custom section class name that must be put in the section list variable.  You can change the name of classes or id seeds in the
+        "NAMES"
+  */
+  const ANIM_LENGTH = .2 * 1000; //in seconds: adjust this variable if css changes
+
+  const NAMES = {
+    hbtn_id_seed: "btn",
+    hbtn_class: "btns",
+    container_id_seed: "content",
+    hide_class: "hide",
+    anim_class: "anim",
+    active_class: "active_btn_switch",
+  }
+
+  const SECTION_LIST = ["fader_wrap1", "fader_wrap2"]
+
+  const Sections = (name, prev, prev_btn_id) => {
+    return(
+      {
+        name: name,
+        prev: prev,
+        prev_btn_id: prev_btn_id,
+      });
+  }
+
+  let key = true;
+
+
+  let animateThing = function(section, id){
+    console.log($("." + section.name +" #"+ id)[0])
+      var thing = $("." + section.name +" #"+ id)[0];
+      thing.classList.remove(NAMES.hide_class);
+      setTimeout(function () {
+        thing.classList.remove(NAMES.anim_class);
+      }, 10);
+      setTimeout(function () {
+        key = true; //unlock buttons
+      }, ANIM_LENGTH + 10);  //amount of anim_class time
+  }
+
+  $(document).ready(function (){
+    $(document).on('click', '.close-popwin', ()=>{
+      $(event.target).parent().addClass('hide');
+    })
+    for(let i = 0, len = SECTION_LIST.length; i < len; i++){
+      const S = Sections(SECTION_LIST[i], null, null);
+      // console.log(S);
+      key = true;
+      const containers = $("." + S.name +" .content_swap");
+      console.log(containers[i].classList);
+      for(let j = 0; j<containers.length; j++){
+        if(!containers[j].classList.contains(NAMES.hide_class)){
+          S.prev = containers[j].id;
+          S.prev_btn_id = NAMES.hbtn_id_seed + containers[j].id.match(/\d+/)[0];
+        }
+      }
+        $("." + S.name +" ."+NAMES.hbtn_class).click(function(){
+            let btn_id = this.id;
+            let id = NAMES.container_id_seed + btn_id.match(/\d+/)[0];
+            if(key && id !== S.prev){
+              // console.log("." + S.name +" #"+S.prev_btn_id,$("." + S.name +" #"+S.prev_btn_id)[0])////////////
+              $("." + S.name +" #"+S.prev_btn_id)[0].classList.remove(NAMES.active_class) // remove class from button
+
+              S.prev_btn_id = btn_id;
+              S.prev = id;
+              key = false;
+
+              //make sure active things are hidden
+              let toggled = "none";
+              for(let i = 0; i<containers.length; i++){
+                if(!containers[i].classList.contains(NAMES.anim_class)){
+                  containers[i].classList.add(NAMES.anim_class);
+                  toggled = containers[i];
+                }
+              }
+              if(toggled !== "none") setTimeout(function(){
+                toggled.classList.add(NAMES.hide_class);
+                // console.log("." + S.name +" #"+S.prev_btn_id,$("." + S.name +" #"+btn_id)[0])//////////
+                $("." + S.name +" #"+btn_id)[0].classList.add(NAMES.active_class) //add class to button
+                setTimeout(animateThing(S, id), 10);
+              }, ANIM_LENGTH); //amount of anim_class time
+              else animateThing(S,id);
+            } else {
+              console.log("Buttons locked...");
+            }
+        });
+
+    }
+  })
+
+</script>
+<script src="./InternationalPg.js"></script>
+
+<script src="http://localhost:3100/livereload.js"></script>

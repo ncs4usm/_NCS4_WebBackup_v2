@@ -1,0 +1,198 @@
+
+<style>
+.tablewrap{
+  display: table;
+  width: 100%;
+}
+
+.headswitch{
+  height: 200px;
+}
+
+.headswitch > .flex-cell{
+  padding: 0px;
+}
+
+/*meat*/
+.tablewrap img{
+  max-height:200px;
+  height: 200px !important;
+  width: auto;
+  display: block;
+  border-radius: 80px;
+}
+
+
+.tablewrap h3{
+  text-align: center;
+  font-size: 1em;
+}
+
+.flex-row{
+  display: flex;
+}
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.flex-cell{
+  /*border: 1px dotted grey;*/
+  width: 100%;
+  display: table-cell;
+  padding: 100px;
+}
+
+
+
+/*top buttons*/
+.flex-cell button.Left, .flex-cell button.Right{
+  height: 200px;
+  width: 100%;
+  border: 1px solid grey;
+}
+
+.flex-cell button.Left{
+  background-color: lightblue;
+  border-right: 0px;
+}
+
+.flex-cell button.Right{
+  background-color: lightgreen;
+}
+
+
+/* content_t areas*/
+.content_t{
+  display: none !important;
+}
+
+.active_sub{
+  display: block !important;
+}
+
+
+
+
+/*specifics*/
+.desccol{
+  width: 85%; /*stretch all the way across */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.imgcol{
+  min-width: 160px;
+  width: 15%;
+}
+
+/* Put in font formatting here */
+.subtable{
+  padding: 20px;
+}
+
+.vspacer{
+  height: 35px;
+}
+
+.contactinfo{
+  text-align: left;
+  padding-left: 20px;
+}
+
+
+/*@media screen and (max-width: 1000px){
+  #tablewrap img{
+    display: inline-block;
+  }
+
+  .flex-row{
+    flex-direction: column;
+  }
+  .imgcol{
+    width: 100%;
+  }
+  .desccol{
+    width: 100%;
+  }
+  .imgholder{
+    text-align: center;
+  }
+
+}*/
+</style>
+
+
+<button class="Right" onclick="alert('hi')">fake</button>
+
+<div class="tablewrap">
+  <div class="flex-row headswitch">
+      <div class="flex-cell"><button class="Left" onclick="setActive()">Domestic</button></div>
+      <div class="flex-cell"><button class="Right">International</button></div>
+  </div>
+</div>
+
+
+<div class="tablewrap content_t active_sub">
+  <div class="flex-row" style="background-color: lightblue">
+    <div class="flex-cell" style="background-color: lightblue">hi</div>
+    <div class="flex-cell" style="background-color: lightblue">hi</div>
+    <div class="flex-cell" style="background-color: lightblue">hi</div>
+    <div class="flex-cell" style="background-color: lightblue">hi</div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">hi</div>
+    <div class="flex-cell">hi</div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">hi</div>
+    <div class="flex-cell">hi</div>
+  </div>
+</div>
+
+<div class="tablewrap content_t">
+  <div class="flex-row"style="background-color: lightgreen">
+    <div class="flex-cell">2</div>
+    <div class="flex-cell">2</div>
+    <div class="flex-cell">2</div>
+    <div class="flex-cell">2</div>
+  </div>
+  <div class="flex-row"style="background-color: lightgreen">
+    <div class="flex-cell">2</div>
+    <div class="flex-cell">2</div>
+  </div>
+  <div class="flex-row"style="background-color: lightgreen">
+    <div class="flex-cell">2</div>
+    <div class="flex-cell">2</div>
+  </div>
+</div>
+
+
+<script>
+  var list = document.getElementsByClassName("tablewrap");
+
+  // var head = document.getElementsByClassName("headswitch")[0].getElementsByTagName("button");
+  //
+  // $(document).ready(()=>{
+  //     head.onClick = "setActive()"
+  // })
+
+
+  var setActive = () => {
+    alert("alert");
+    return false;
+  //   //initialize all to unactive
+  //   // for(var i=0; i < list.length; i++)
+  //   // {
+  //   //   if(list[i].classList.contains("active_sub")) alert("active");//list[i].classList.toggle("active_sub");
+  //   // }
+  //   //set id to active
+  //   // list[id].classList.toggle("active_sub");
+  //   //list[id].classList;
+  //
+  //   // elm.addClass("active_sub");
+  //   // list[].classList.toggle("active_sub");
+  }
+
+</script>

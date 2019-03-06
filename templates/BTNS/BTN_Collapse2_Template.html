@@ -1,0 +1,172 @@
+<style type="text/css">
+/* START OF CSS THAT IS ALREADY IN THE BASE HTML FILE =================================================================*/
+
+/* [FLEX] */
+.flex-tablewrap{
+  display: table;
+  width: 100%;
+  margin: auto;
+}
+.f-col{
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.f-cell{
+  display: table-cell;
+}
+/* [END FLEX] */
+/* .f-cell h3{ */
+label.dropdown_D {
+    position: relative;
+    z-index: 2;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    padding-top: 1em;
+    font-size: 1.3em;
+    background: rgb(240,249,255);
+    background: -moz-linear-gradient(top, rgba(240,249,255,1) 0%, rgba(203,235,255,1) 59%, rgba(161,219,255,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 59%,rgba(161,219,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 59%,rgba(161,219,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 );
+}
+label.dropdown_D:hover{
+  background-color:
+}
+.open-state{
+  display: none;
+}
+.open-target{
+  position:relative;
+  z-index: 1;
+  margin-top: -25px;
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: .25s ease-in-out;
+}
+.open-state:checked ~ .open-target{
+  margin-top:0;
+  opacity: 1;
+  max-height: 60em;
+}
+label.dropdown_D:before{
+  display: inline-block;
+  content: "▼ ";
+  transition: -ms-transform .25s ease-in-out;
+  transition: -webkit-transform .25s ease-in-out;
+  transition: transform .25s ease-in-out;
+}
+.open-state ~ label.dropdown_D:before{
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.open-state:checked ~ label.dropdown_D:before{
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* END OF CSS THAT IS ALREADY IN THE BASE HTML FILE ================================================================= */
+
+
+  .wrapper{
+    width: 70%;
+    margin: auto;
+  }
+  .dropdown_D{
+    background: none !important;
+    border: none !important;
+    padding-top: 1em !important;
+  }
+  .dropdown_D:before{
+    content:' ' !important;
+  }
+
+  .inner_dropdown{
+    max-height: 3em;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .inner_dropdown img{
+    height: 100%;
+    position: absolute;
+    left: -55px;
+    width: auto;
+  }
+  .inner_dropdown span{
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background-color: #5b9bd4;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  @media (max-width:750px){
+      .inner_dropdown span{
+        font-size:1em;
+
+      }
+  }
+  @media (max-width:500px){
+      .inner_dropdown span{
+        font-size:.8em;
+
+      }
+      .inner_dropdown span:hover{
+        background: rgb(91,155,212);
+        background: -moz-linear-gradient(left, rgba(91,155,212,1) 0%, rgba(122,170,211,1) 100%);
+        background: -webkit-linear-gradient(left, rgba(91,155,212,1) 0%,rgba(122,170,211,1) 100%);
+        background: linear-gradient(to right, rgba(91,155,212,1) 0%,rgba(122,170,211,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b9bd4', endColorstr='#7aaad3',GradientType=1 );
+      }
+
+  }
+</style>
+
+    <div class="content">
+        <h1 style="text-align:center;">Where To Start?</h1>
+      <br><br>
+      <div class="wrapper">
+        <input type="checkbox" class="open-state" id="content_1">
+        <label class="dropdown_D" for="content_1">
+          <span class="inner_dropdown"><img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/cssp_left_edge.png" alt="">
+          <span>Title</span>
+        </span>
+        </label>
+        <div class="open-target">
+            <p>CONTENTCONTENTCONTENT</p>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  <script type="text/javascript">
+    // <![CDATA[
+    $(document).ready(function() {
+        $(".row.row-wide.clearfix").addClass("no-max-width");
+      })
+      // ]]>
+  </script>
+</div>

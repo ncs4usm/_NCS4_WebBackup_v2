@@ -1,0 +1,77 @@
+<style>
+/* outer styles */
+ul.connect_header{
+  padding: 0;
+  list-style: none;
+  display: -webkit-flex;
+  display: flex;
+  margin: auto;
+  max-width: 1200px;
+  align-items:center;
+  flex-wrap: wrap;
+}
+ul.connect_header a, ul.connect_header .drop > button{
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  text-align:center;
+}
+ul.connect_header a:visited{
+  color: inherit;
+}
+ul.connect_header li{
+  margin-left: auto;
+  margin-right: auto;
+  /* padding: 10px; */
+}
+ul.connect_header li:hover{
+  background-color: #EEEEEE;
+  cursor: pointer;
+}
+
+/* drop styles */
+
+.drop{
+  overflow: hidden;
+}
+.drop > button{
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+.drop:hover .drop-content{
+  display: block;
+}
+.drop .drop-content{
+  display: none;
+  position: absolute;
+  min-width: 10em;
+  background-color: lightblue;
+  z-index: 1;
+  margin: 0;
+}
+.drop .drop-content > a:hover{
+  background-color: lightgrey;
+}
+</style>
+
+
+<ul class="connect_header" role="navigation">
+  <li><a href="#">HOME</a></li>
+  <li><a href="#">JOIN NCS4 CONNECT</a></li>
+  <li><a href="#">MEMBERSHIP INFO</a></li>
+  <li class='drop'>
+    <button>COMMUNITIES
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="drop-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+  <li><a href="#">KNOWLEDGE PORTAL</a></li>
+  <li><a href="#">BEST PRACTICES</a></li>
+  <li><a href="#">DIRECTORY</a></li>
+  <li><a href="#">HELP</a></li>
+</ul>

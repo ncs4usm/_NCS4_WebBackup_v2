@@ -1,0 +1,69 @@
+<style>
+#container{
+  position: relative;
+  height: 400px;
+}
+#thing{
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  background-color: green;
+  height: 400px;
+  width: 400px;
+  opacity: 1;
+  max-height: 100%;
+  overflow: hidden;
+  transition: all .5s ease-in-out;
+}
+#thing2{
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  background-color: blue;
+  height: 400px;
+  width: 400px;
+  opacity: 1;
+  max-height: 100%;
+  overflow: hidden;
+  transition: all .5s ease-in-out;
+}
+.hide{
+  max-height: 0 !important;
+  opacity: 0 !important;
+}
+</style>
+<button type="button" id="butt">swap</button>
+<div id="container">
+  <div id="thing"></div>
+  <div id="thing2" class="hide"></div>
+</div>
+
+
+<script>
+  flag = true;
+  btn = document.getElementById("butt");
+  thing = document.getElementById("thing");
+  thing2 = document.getElementById("thing2");
+  flag
+  console.log(btn);
+  btn.addEventListener("click", ()=>{
+    // (flag)?(thing.style.maxHeight = "0"):(thing.style.maxHeight = "100%");
+
+    // if(flag){
+    //   thing.style.maxHeight = "0";
+    //   thing2.style.maxHeight = "100%";
+    //   thing.style.opacity = "0";
+    //   thing2.style.opacity = "1";
+    // }
+    // else{
+    //   thing.style.maxHeight = "100%";
+    //   thing2.style.maxHeight = "0";
+    //   thing.style.opacity = "1";
+    //   thing2.style.opacity = "0";
+    // }
+    // flag = !flag;
+
+    thing.classList.toggle("hide");
+    thing2.classList.toggle("hide");
+  });
+</script>

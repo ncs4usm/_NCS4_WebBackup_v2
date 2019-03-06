@@ -1,0 +1,109 @@
+<style media="screen">
+
+.container {
+  margin: 10px auto;
+  padding: 20px;
+  width: 350px;
+  text-align: center;
+}
+
+.container h1 {
+  font: bold 40px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+.container p {
+  font: 13px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+label.tog-label {
+  display: block;
+  margin: 20px auto;
+  width: 200px;
+  height: 50px;
+  background: #232323;
+  color: #fff;
+  text-align: center;
+  font: 14px/50px Helvetica, Verdana, sans-serif;
+}
+
+label:hover {
+  background: #444;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -100;
+  margin: auto;
+  padding: 20px;
+  width: 500px;
+  height: 200px;
+  border-radius: 10px;
+  /* background: rgba(255,255,255,0.7 ); */
+  background: white;
+
+  -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -ms-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+.modal h2 {
+  color: #232323;
+  text-transform: uppercase;
+  font: 35px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+.modal p {
+  color: #444;
+  text-align: left;
+  font: 13px/1.8 Georgia, Times, sans-serif;
+}
+input#toggle {
+  display:none;
+}
+input#toggle:checked + .modal {
+  opacity: 1;
+  z-index: 1;
+}
+
+</style>
+
+
+<div class="container">
+  <h1>Css Modal Demo</h1>
+  <p>This page uses a checkbox to create a toggle event that shows and hides a pure CSS modal window. Pretty cool!</p>
+
+  <label class="tog-label" for="toggle">Toggle Me</label>
+  <input type="checkbox" id="toggle" />
+
+  <div class="modal">
+    <h2>Modal Window</h2>
+    <p>Lorem ipsum...</p>
+  </div>
+  <div>
+    <p>this is some other text</p>
+    <p>this is some other text</p>
+    <p>this is some other text</p>
+    <p>this is some other text</p>
+  </div>
+
+
+  <div style="display:flex; width:100%; justify-content: center;">
+    <div style="background-color:#736563; width: 30px; height: 30px;"></div>
+    <div style="background-color:#726574; width: 30px; height: 30px;"></div>
+    <div style="background-color:#686177; width: 30px; height: 30px;"></div>
+    <div style="background-color:#616969; width: 30px; height: 30px;"></div>
+  </div>
+</div>

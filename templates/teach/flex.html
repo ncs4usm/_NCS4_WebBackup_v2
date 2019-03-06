@@ -1,0 +1,54 @@
+<style>
+
+.local-flex{
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  border: 1px solid black;
+  width: 90%;
+  margin: auto;
+  /* align-items: center;  //these align flex items vertically and horizontally
+  justify-content: center; */
+}
+.lf-container{
+  /* this property has 'display: block' by default */
+  height: 100px;
+  width: 100px;
+  border: 1px dotted black;
+  flex: 1;
+  margin:auto;
+  min-width: 100px;
+}
+#content1 > .local-flex > .lf-container{
+  background-color: lightblue;
+}
+
+
+</style>
+
+
+<div id="content1" class="content_swap">
+  <div class="local-flex">
+    <div style="flex: 3; background-color: tan;" class="lf-container"></div>
+    <div style="flex: 2; background-color: lightgreen;" class="lf-container"></div>
+    <div style="flex: 1; background-color: lightred;" class="lf-container"></div>
+  </div>
+  <div class="local-flex">
+    <div class="lf-container">a</div>
+    <div class="lf-container">b</div>
+    <div class="lf-container">c</div>
+    <div class="lf-container">d</div>
+    <div class="lf-container">e</div>
+    <div class="lf-container">f</div>
+  </div>
+
+  <div style="flex-wrap: wrap-reverse" class="local-flex">
+    <div style="flex: none;" class="lf-container">1</div>
+    <div style="flex: none;" class="lf-container">2</div>
+    <div style="flex: none;" class="lf-container">3</div>
+    <div style="flex: none;" class="lf-container">4</div>
+  </div>
+
+</div>

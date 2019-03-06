@@ -1,0 +1,342 @@
+<style>
+  ._Portals{
+
+    text-align: center;
+    background-color: transparent;
+    max-height: 9.5em;
+    /* min-width: 9em; */
+    margin: auto;
+    width: auto;
+    height: auto;
+    }
+    .change_td{
+    height:27vh;
+    width: 25vw;
+    text-align: center;
+    }
+    .Portal-Spacer{
+      border: none;
+      max-width:90%;
+      height: 11em;  /*66vh extended*/  /*PX:  517px extended, 217px else*/
+      background-image: url(https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Backgrounds/NCS4%20Website%20new%20v2.jpg);
+      background-repeat: no-repeat;
+      background-attachment:fixed;
+      background-position: center top;
+      background-size: cover;
+      margin-top:-1px; /*hides mystery border*/
+      transition: height 1s ease-in-out;
+      margin:auto;
+    }
+
+    .portal_link{
+      position:relative;
+      z-index: 0;
+    }
+    .portal_map_L{
+      visibility: hidden;
+      opacity: 0;
+      display: table-cell;
+      position: absolute;
+      z-index: 1;
+      margin-left: -6%;
+      margin-top: 2%;
+      height: auto;
+      width: 12%;
+      transition: visibility 0s, opacity 0.5s linear;
+      text-align: left;
+      color: black;
+      font-size: 1em;
+
+    }
+    .portal_map_R {
+      visibility: hidden;
+      opacity: 0;
+      display: table-cell;
+      position: absolute;
+      z-index: 1;
+      margin-left: -31%;
+      margin-top: 2%;
+      height: auto;
+      width: 12%;
+      transition: visibility 0s, opacity 0.5s linear;
+      text-align: left;
+      color: black;
+      font-size: 1em;
+    }
+    td.portal_link:hover+td.portal_map_L, td.portal_link:hover+td.portal_map_R{
+      visibility: visible !important;
+      opacity: 1;
+    }
+
+
+
+    td.portal_map_L:hover, td.portal_map_R:hover{
+      visibility: visible !important;
+      opacity: 1;
+    }
+
+    .portal_map_L a, .portal_map_R a{
+      font-size: 1em;
+      text-decoration: none;
+    }
+
+    .choose_portal_text{
+      font-size: 2em;
+      margin-top: 24px;
+      margin-bottom: -16px;
+      text-align: center;
+      font-weight: bold;
+      color: #ebba3a;
+    }
+
+    .Portal_Info{
+      display: none;
+      position: absolute;
+      bottom: 4.6em;
+      left: 7em;
+      border-radius: 15px;
+      border: 1px solid grey;
+    }
+    .Portal_Info::before{
+      content:"LEARN MORE";
+    }
+
+  /*animation variables*/
+    #portal_area{
+      position:relative;
+      z-index:2;
+      width:100%;
+    }
+    #portal_area td{
+      text-align:center;
+      width: 13%;
+      /* padding-left: 3.5%;
+       padding-right: 3.5%; */
+
+    }
+
+    #panel{
+      display:none;
+      position:relative;
+      opacity: 0;
+      height: 0;
+      transition: all 1s ease-in-out;
+    }
+    #p_info{
+
+    	position: relative;
+    	top: 0px;
+      transition: all 1s ease-in-out;
+    }
+    #p_header{
+    	text-align: center;
+    	font-size: 1.7em;
+    }
+
+
+</style>
+
+
+
+<p style="border-top: 7px solid #ebba3a"></p>
+<div>
+  <p class="choose_portal_text">SELECT A PORTAL TO GET STARTED</p>
+</div>
+<br><br>
+
+<div class="Portal-Spacer">
+<table style="margin:auto;">
+<tbody class="change_tbody">
+<tr id="portal_area">
+      <td data-aos="zoom-in-right" data-aos-once="true" class=" portal_link">
+
+        <a href="/sandbox/knowledgeportal">
+          <img class="K _Portals" style="background-color: transparent;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Temp%20Portals/Knowledge_P.png" alt="KNOWLEDGE PORTAL" />
+        </a>
+        <button class="K Portal_Info" type="button"></button>
+      </td>
+
+      <td data-aos="zoom-in-right" data-aos-once="true" class=" portal_link"><a href="/sandbox/trainingportal">
+        <img class="T _Portals" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Temp%20Portals/Training_P.png" alt="TRAINING PORTAL" />
+      </a>
+      <button class="T Portal_Info" type="button"></button>
+    </td>
+
+
+      <td data-aos="zoom-in" data-aos-once="true" class=" portal_link"><a href="/sandbox/researchportal">
+        <img class="R _Portals" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Temp%20Portals/Research_P.png" alt="RESEARCH PORTAL" />
+      </a>
+      <button class="R Portal_Info" type="button"></button>
+    </td>
+
+      <td data-aos="zoom-in-left" data-aos-once="true" class=" portal_link"><a href="/sandbox/labportal">
+        <img class="L _Portals" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Temp%20Portals/Laboratory_P.png" alt="LAB" />
+      </a>
+      <button class="L Portal_Info" type="button"></button>
+    </td>
+
+
+      <td data-aos="zoom-in-left" data-aos-once="true" class=" portal_link"><a href="/sandbox/professionaldevportal">
+        <img class="PD _Portals" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Created%20Graphics/Temp%20Portals/ProfessionalDevelopment_P.png" alt="PROFESSIONAL DEVELOPMENT PORTAL" />
+      </a>
+      <button class="PD Portal_Info" type="button"></button>
+    </td>
+</tr>
+<tr id="panel">
+  <td colspan="5">
+        <div id="p_info">
+            <h3 id="p_header" style="text-align: center;">Test_Portal_Name</h3>
+            <br>
+            <span id="p_desc" >CEIA is a world leading manufacturing company specialized in the design, engineering and production of Metal Detectors and Electromagnetic Inspection Devices.  CEIA event security solutions include metal detectors that comply with the strictest security standards and provide unmatched reliability, immunity to environmental interference and consistency for the detection of all the metal objects that could be considered a threat to individuals and their safety. Dynamic solutions and exceptional service are the foundation of CEIA’s commitment to customer satisfaction.
+            </span>
+        </div>
+
+
+        <ul id="sub_links">
+
+        </ul>
+
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--
+
+<td  class="change_td">
+  <div>
+    <ul>
+      <li>Journal of Sport Saftey</li>
+      <li>Dissertations</li>
+      <li>Technology Consortium</li>
+      <li>SESA</li>
+      <li>Laboratory</li>
+    </ul>
+  </div>
+</td>
+
+<td  class="change_td">
+  <div>
+    <ul>
+      <li>Domestic</li>
+      <li style="list-style-type: none;">~ CSVS</li>
+      <li style="list-style-type: none;">~ High School</li>
+      <li style="list-style-type: none;">~ TEEX Courses</li>
+      <li>International</li>
+      <li style="list-style-type: none;">~ Project Stadia</li>
+      <li style="list-style-type: none;">~ ICT</li>
+      <li style="list-style-type: none;">~ Strategic Partners</li>
+    </ul>
+  </div>
+</td>
+
+<td  class="change_td">
+  <div>
+    <ul>
+      <li>Best Practices</li>
+      <li>Gameday Security Magazine</li>
+      <li>Analysis of Incidents</li>
+      <li>NCS4 Connect</li>
+    </ul>
+  </div>
+</td>
+-->
+
+
+<script>// <![CDATA[
+
+  var portalMaps = {
+    "A": {
+      "title": "About Portal",
+      "desc": "Learn about NCS4",
+      "content" : {
+          "Link" : "https//:www.google.com",
+          "Sub" : {
+              "Link" : "https//:www.google.com",
+              "Sub" : {
+                  "Link" : "https//:www.google.com",
+              }
+          }
+      },
+      "color": "palegoldenrod",
+    },
+    "K": {
+      "title": "Knowledge Portal",
+      "desc": "Interact with the wealth of knowledge in our guides and community pages",
+      "content" : {
+          "Link" : "https//:www.google.com",
+      },
+      "color": "khaki",
+    },
+    "T": {
+      "title": "Training Portal",
+      "desc": "Take our CSVS or TEEX courses",
+      "content" : {
+          "Link" : "https//:www.google.com",
+      },
+      "color": "lightsalmon",
+
+    },
+    "R": {
+      "title": "Research Portal",
+      "desc": "Study our research",
+      "content" : {
+          "Link" : "https//:www.google.com",
+      },
+      "color": "lightgreen",
+
+    },
+    "L": {
+      "title": "Lab Portal",
+      "desc": "Check out the latest technology in the field",
+      "content" : {
+          "Link" : "https//:www.google.com",
+      },
+      "color": "lightblue",
+    },
+    "PD": {
+      "title": "Professional Development Portal",
+      "desc": "Take our CSSP course or attend our events",
+      "content" : {
+          "Link" : "https//:www.google.com",
+      },
+      "color": "lavender",
+    }
+  }
+  var prev = null;
+
+
+  $("button.Portal_Info").on("click", function(){
+    var btn = $(this);
+    btn.prop('disabled', true); //lock button until finished
+    let p = this.classList[0]
+    // console.log(p, portalMaps[p]);
+    $("#panel").css("opacity", "0");
+    if(prev===p){          //if first+n time, check if prev is the same as current, if so close the header and do nothing, prev=null
+      prev = null;
+      $("div.Portal-Spacer").css("height", "11em")
+      $("#panel").css("height", "0px");
+      $("#p_info").css("top", "0px"); //this gets in the way for some reason
+      $("#panel").css("background-color", "transparent"); //edge supported
+      btn.prop('disabled', false);
+      return;
+    } else if(prev===null) {//if first time, assign p and continue
+      prev = p;
+    }
+
+      $("div.Portal-Spacer").css("height", "26em")
+      $("#panel").css("height", "300px");
+      $("#p_info").css("top", "-85px");
+      setTimeout(function(){
+
+        $("#panel").css("opacity", "1");
+        $("#panel").css("background-color", portalMaps[p].color);
+        $("h3#p_header").text(portalMaps[p].title);
+        $("#p_desc").text(portalMaps[p].desc);
+        btn.prop('disabled', false);
+      },500)
+      prev = p;
+  });
+
+
+// ]]></script>

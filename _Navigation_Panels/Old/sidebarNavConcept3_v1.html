@@ -1,0 +1,745 @@
+<style type='text/css'>
+  :root {
+
+    --alpha-text-color: black;
+    --alpha-bg-color: #e8b220;
+    --beta-bg-color: #eac257;
+    --gamma-bg-color: #e8b220;
+  }
+
+  #sidenav-bg {
+    width: 182px;
+    height: 100%;
+    background-color: #e8b220;
+    background-color: var(--alpha-bg-color);
+    position: fixed;
+    z-index: -1;
+    margin-left: 0px;
+  }
+
+  #background { /* STYLE ALTERED AT PAGE LOAD: Some values may not change when adjusted here (check related javascript)*/
+    position: fixed;
+    z-index: 10;
+    left: 0px;
+    top: 0;
+    height: 183%;
+    width: 182px;
+    /* overflow-y: hidden; */
+    /* box-shadow: 2px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    transition: transform 0.5s ease-in-out 0s;
+    -ms-transform: translate(0em);
+    -webkit-transform: translate(0em);
+    -moz-transform: translate(0em);
+    -o-transform: translate(0em);
+    transform: translate(0em);
+  }
+  #background a{
+    color: black;
+    color: var(--alpha-text-color);
+  }
+  /*=======[Open/Close Button Stying]=======*/
+
+  button.togglesidebar {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-left: 182px;
+    transition: all 0.3s ease-in-out 0s;
+      background-color: #e8b220;
+  background-color: var(--alpha-bg-color);
+    border: none;
+    text-shadow: none;
+    /* box-shadow: 2px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  }
+
+  button.togglesidebar:hover {
+    width: 55px;
+    height: 55px;
+  }
+
+  button.togglesidebar:focus {
+    outline: none;
+  }
+  /*=======[Accordion Styling]=======*/
+
+  button.accordion,
+  a.accordion {
+    /* padding-right: 8px; */
+    display: block;
+    font-weight:bold;
+    background-color: #e8b220;
+    background-color: var(--alpha-bg-color);
+    /*rgba(67,21,9,.78)*/
+    color: black;
+    color: var(--alpha-text-color);
+    cursor: pointer;
+    padding: 18px;
+    width: 182px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    visibility: visible;
+    transition: all 0.4s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+  }
+
+  a.accordion {
+    padding-right: 8px;
+    color: black;
+    color: var(--alpha-text-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  button.accordion:after {
+    content: "▼";
+    float: right;
+    transition: transform .5s ease-in-out;
+
+  }
+  button.accordion.active:after {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+
+  button.accordion.active,
+  button.accordion:hover,
+  a.accordion.active,
+  a.accordion:hover {
+      background-color: #eac257;
+  background-color: var(--beta-bg-color);
+  }
+  /*=======[Inner sidebar_panel Styling]=======*/
+
+  div.sidebar_panel {
+    padding: 0 15px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    width: 182px;
+
+  }
+  /*submenu*/
+
+  .droplist {
+    /**/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -15px;
+    width: 182px;
+    background-color: #e8b220;
+    background-color: var(--gamma-bg-color);
+  }
+
+  .droplistleaf {
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    color: var(--alpha-text-color);
+    border-left: 11px solid black;
+    cursor: pointer;
+    /* width: 100%; */
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: .4s;
+    padding: 8px 16px;
+    background-color: #e8b220;
+    background-color: var(--gamma-bg-color);
+    margin-left: -15px;
+    width: 182px;
+    font-weight:normal !important;
+    text-decoration: none !important;
+  }
+
+  .droplistleaf:hover {
+    margin: 0;
+    padding-right: 0px;
+    border-left: 16px solid black;
+    background-color: #eac257;
+    background-color: var(--beta-bg-color);
+    width: 182px;
+    color: black;
+    color: var(--alpha-text-color);
+    margin-left: -15px;
+    font-weight:normal !important;
+    text-decoration: none !important;
+  }
+  /*=======[Hoversub Styling]=======*/
+
+  .hsub_ACTIVE {
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    -webkit-transform: translate(0) !important;
+    -moz-transform: translate(0) !important;
+    -ms-transform: translate(0) !important;
+    -o-transform: translate(0) !important;
+    transform: translate(0) !important;
+    transition-delay: 0s, 0s, 0.4s !important;
+  }
+
+  .hoversub_btn {
+    position: relative;
+    bottom: 32px;
+    right: -14px;
+    background-color: rgba(248, 248, 248, 0.27);
+    border: none;
+    padding: 0px 12px 0px 14px;
+    font-size: 22px;
+    background-image: url(https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png);
+    background-position: center;
+    background-size: 23px;
+    background-repeat: no-repeat;
+  }
+
+  .hoversub_btn:focus {
+    outline: none;
+  }
+
+  .hoversub_btn:active {
+    background-color: rgba(248, 248, 248, 0.5);
+  }
+  /*sub-submenu*/
+
+  .hoversub {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transform: translate(4em);
+    -moz-transform: translate(4em);
+    -ms-transform: translate(4em);
+    -o-transform: translate(4em);
+    transform: translate(4em);
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    display: block;
+    position: absolute;
+    /* border: 1px solid #be952a; */
+    /* border-left: none; */
+    /* box-shadow: 2px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    z-index: 2;
+    left: 182px;
+    margin-top: -25px;
+    width: 200px;
+  }
+
+  .hoversub a {
+    background-color: #e8b220;
+    background-color: var(--gamma-bg-color);
+    /*rgba(67,21,9,.78)*/
+    color: black;
+    color: var(--alpha-text-color);
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: normal;
+  }
+
+  .hoversubLeaf:hover {
+    background-color: #eac257;
+    background-color: var(--beta-bg-color);
+  }
+
+  .stickit {
+    display: block;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    background-color: transparent;
+    border: none;
+    width: 11vw;
+    /*make sure it doesn't overlay the whole page*/
+  }
+
+
+  .move{
+    -webkit-transform: translate(-13em) !important;
+    -moz-transform: translate(-13em) !important;
+    -ms-transform: translate(-13em) !important;
+    -o-transform: translate(-13em) !important;
+    transform: translate(-13em) !important;
+  }
+  .noTransition{
+    transition: none !important;
+  }
+
+  /* invisible on start*/
+
+  /*@media only screen and (max-width:1120px) and (min-width: 768px) {
+    .stickit {
+      top: 100px;
+    }
+  }*/
+
+  /*@media all and (max-width: 768px) {
+    #background{
+      transform: translate(-13em);
+    }
+  }*/
+</style>
+
+
+<div id="background" style="visibility: hidden;">
+  <div id="sidenav-bg"></div>
+  <div id="about" class="stickit" style="display: none;">
+    <button type="button" class="togglesidebar" onclick="open_close()"> <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" /> </button> <a class="accordion" href="/aboutncs4">
+      ABOUT NCS4</a>
+    <a class="accordion" href="/aboutncs4/our-staff">
+      OUR STAFF</a>
+    <a class="accordion" href="/aboutncs4/advisory-committees" style="">
+      ADVISORY COMMITTEES</a>
+      <a class="accordion" href="/aboutncs4/news" style="">
+        NEWS</a>
+    <a class="accordion" href="/aboutncs4/ncs4-recognition-awards">
+      NCS4 RECOGNITION AWARDS</a>
+    <a class="accordion" href="/aboutncs4/9-11-sport-security-memorial">
+      9/11 SPORT SECURITY MEMORIAL</a>
+    <a class="accordion" href="/aboutncs4/contact">
+      CONTACT</a>
+
+  </div>
+  <!-- ========================================[KNOWLEDGE]============================================================ -->
+  <div id="knowledge" class="stickit" style="display: none;">
+    <button type="button" class="togglesidebar" onclick="open_close()"> <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" /> </button>
+    <a class="accordion" href="/knowledgeportal/buyers-guide" >
+      BUYER'S GUIDE</a>
+    <a class="accordion" href="/knowledgeportal/best-practices" >
+      BEST PRACTICES</a>
+    <a class="accordion" href="/knowledgeportal/gameday-security" >
+      GAMEDAY SECURITY</a>
+      <a class="accordion" href="/knowledgeportal/analysis-of-incidents" >
+      <a class="accordion" href="/connect/knowledge-portal/knowledge-portal-search" >
+        KNOWLEDGE PORTAL (MEMBERS)</a></div>
+  <!-- =======================================[TRAINING]============================================================= -->
+  <div id="training" class="stickit" style="display: none;">
+    <button type="button" class="togglesidebar" onclick="open_close()"> <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" /> </button>
+    <button type="button" class="accordion" >
+      FEMA/DHS</button>
+    <div id="fema-dhs" class="sidebar_panel">
+        <a class="droplistleaf" href="/trainingportal/fema-dhs/overview">
+          OVERVIEW</a>
+        <a class="droplistleaf" style="white-space:nowrap;" href="/trainingportal/fema-dhs/risk-management">
+          RISK MANAGEMENT</a>
+        <a class="droplistleaf" href="/trainingportal/fema-dhs/evacuation">
+          EVACUATION</a>
+        <a class="droplistleaf" href="/trainingportal/fema-dhs/incident-management">
+          INCIDENT MANAGEMENT</a>
+        <a class="droplistleaf" href="/trainingportal/fema-dhs/enhanced-incident-management">
+          ENHANCED INCIDENT MANAGEMENT</a>
+    </div>
+    <button type="button" class="accordion" >INTERNATIONAL</button>
+    <div id="international" class="sidebar_panel">
+      <!-- <a class="droplistleaf" href="/trainingportal/international"> OVERVIEW</a> -->
+      <div class="hoversubContainer"><a class="droplistleaf" href="/trainingportal/international/interpol">
+        INTERPOL</a> <span style="float: right; height: 0px;"><button id="hsub_btn1" class="hoversub_btn" type="button">&nbsp;</button></span>
+        <div id="hsub1" class="hoversub">
+          <a class="hoversubLeaf" href="/trainingportal/international/interpol/project-stadia">PROJECT STADIA</a>
+          <a class="hoversubLeaf" href="/trainingportal/international/interpol/international-sport-safety-and-security-professional-certificate">
+            INTERNATIONAL SPORT SAFETY AND SECURITY PROFESSIONAL CERTIFICATE</a>
+        </div>
+      </div>
+      <a class="droplistleaf" href="/trainingportal/international/strategic-partners">STRATEGIC PARTNERS</a>
+      <a class="droplistleaf" href="/trainingportal/international/international-institute-for-counter-terrorism">INTERNATIONAL INSTITUTE FOR COUNTER-TERRORISM</a>
+      <a class="droplistleaf" href="/trainingportal/international/resource-links"> RESOURCE LINKS</a>
+
+    </div>
+  </div>
+  <!-- ========================================[EVENTS]============================================================ -->
+  <div id="eventsportal" class="stickit" style="display: none;">
+    <button type="button" class="togglesidebar" onclick="open_close()"> <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" /> </button>
+    <a class="accordion" href="/events/conference"> CONFERENCE</a>
+    <a class="accordion" href="/events/summits" >SUMMITS</a>
+  </div>
+  <!-- ========================================[RESEARCH]============================================================ -->
+  <div id="research" class="stickit" style="display: none;">
+    <button type="button" class="togglesidebar" onclick="open_close()"> <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" /> </button>
+    <a class="accordion" href="http://aquila.usm.edu/jsss/"> JOURNAL OF SPORT SAFETY</a>
+    <a class="accordion" href="/researchportal/dissertations"> DISSERTATIONS</a>
+     <a class="accordion" href="/researchportal/publications" > PUBLICATIONS</a>
+   </div>
+  <!-- =======================================[LAB]============================================================= -->
+  <div id="lab" class="stickit" style="display: none;">
+    <button type="button" class="togglesidebar" onclick="open_close()"> <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512_WHITE.png" /> </button>
+    <button type="button" class="accordion" >
+      ABOUT</button>
+    <div id="lab-about" class="sidebar_panel">
+        <!-- <a href="/labportal/about" class="droplistleaf">
+          OVERVIEW</a> -->
+
+        <a href="/labportal/about/integrated-technology" class="droplistleaf">
+          INTEGRATED TECHNOLOGY</a>
+        <a href="/labportal/about/charter-donors" class="droplistleaf">
+          CHARTER <br />DONORS</a>
+    </div>
+    <button type="button" class="accordion">
+      LAB TESTING</button>
+    <div id="lab-testing" class="sidebar_panel">
+        <a href="/labportal/lab-testing" class="droplistleaf">
+          OVERVIEW</a>
+        <a href="/labportal/lab-testing/evaluated-product-list" class="droplistleaf">
+          EVALUATED PRODUCT LIST</a>
+    </div>
+    <a href="/labportal/train" class="accordion" >
+      TRAINING ACADEMY</a>
+    <a href="/labportal/contact" class="accordion">
+      CONTACT</a>
+
+  </div>
+  <!-- ========================================[PROF_DEV]============================================================ -->
+  <div id="professionaldev" class="stickit" style="display: none;">
+    <button type="button" class="togglesidebar" onclick="open_close()"> <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" /> </button>
+    <button type="button" class="accordion" >
+      CERTIFICATIONS</button>
+    <div id="certifications" class="sidebar_panel">
+        <div class="hoversubContainer"><a class="droplistleaf" href="/professionaldevportal/certifications/cssp">
+          CERTIFIED SPORT SECURITY PROFESSIONAL</a> <span style="float: right; height: 0px;"><button id="hsub_btn2" class="hoversub_btn" type="button">&nbsp;</button></span>
+          <div id="hsub2" class="hoversub">
+            <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp">OVERVIEW</a>
+            <a class="hoversubLeaf" style="white-space:nowrap;" href="/professionaldevportal/certifications/cssp/getting-started">GETTING STARTED</a>
+            <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/benefits">BENEFITS</a>
+            <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/news-testimonials">NEWS & TESTIMONIALS</a>
+            <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/forms">FORMS</a>
+            <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/recertification">RECERTIFICATION</a>
+            <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/appeals-complaints">APPEALS & COMPLAINTS</a>
+          </div>
+        </div>
+        <div class="hoversubContainer"><a class="droplistleaf" href="/professionaldevportal/certifications/csvs">
+          CERTIFIED SPORT VENUE STAFF</a> <span style="float: right; height: 0px;"><button id="hsub_btn3" class="hoversub_btn" type="button">&nbsp;</button></span>
+          <div id="hsub3" class="hoversub">
+              <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/how-it-works">
+                HOW IT WORKS</a>
+              <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/training">
+                TRAINING</a>
+              <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/background-screening">
+                BACKGROUND SCREENING</a>
+              <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/reporting">
+                REPORTING</a>
+              <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/faqs">
+                FAQ's</a>
+              <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/contact">
+                CONTACT</a>
+          </div>
+        </div>
+    </div>
+    <!-- <button type="button" class="accordion">
+      EVENTS</button>
+    <div id="events" class="sidebar_panel">
+      <a class="droplistleaf" href="/professionaldevportal/ncs4events/conference"> CONFERENCE</a>
+      <a class="droplistleaf" href="/professionaldevportal/ncs4events/summits" >SUMMITS</a>
+    </div> -->
+    <a href="/connect" class="accordion">
+      NCS<sup>4</sup> CONNECT</a>
+    <button type="button" class="accordion" >
+      ACADEMICS</button>
+    <div id="academics" class="sidebar_panel">
+      <a class="droplistleaf" href="/professionaldevportal/academics/mba-program"> MBA PROGRAM</a>
+      <a class="droplistleaf" href="/professionaldevportal/academics/graduate-certificate" >GRADUATE CERTIFICATE</a>
+    </div>
+
+
+    <!-- <a class="accordion" html="/professionaldevportal/continuing-education" >
+      CONTINUING EDUCATION</a> -->
+      <!-- <div class="under_construction"><img src="https://cdn.pixabay.com/photo/2017/06/16/07/26/under-construction-2408062_960_720.png" alt="under construction">
+        <h3>Please excuse our mess</h3>
+        <p>This website </p>
+      </div> -->
+</div>
+<!-- <script src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/JSFiles/sidebarNavConcept3_min.js"></script> -->
+<script>
+  // <![CDATA[
+  //get fundamentals
+  var acc = document.getElementsByClassName('accordion');
+  var sidebar_panel_list = document.getElementsByClassName('sidebar_panel');
+  var hsub = document.getElementsByClassName('hoversub');
+  var toggleButton = document.getElementsByClassName('togglesidebar');
+  var hsubBtns = document.getElementsByClassName('hoversub_btn');
+  var bg = $("#background");
+  var sbg = $("#sidenav-bg");
+  var stickits = $(".stickit");
+  // var dynamicWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+  //get Nav Types
+  var aboutportal = document.getElementById('about');
+  var knowledgeportal = document.getElementById('knowledge');
+  var trainingportal = document.getElementById('training');
+  var researchportal = document.getElementById('research');
+  var labportal = document.getElementById('lab');
+  var professionaldevportal = document.getElementById('professionaldev');
+  var eventsportal = document.getElementById('eventsportal');
+
+
+  var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  var open = true;
+  var setBySmallWidth = false;
+  if(width <= 768) open = false;
+  var scrunch = false;
+  //get paths
+  var path = window.location.pathname;
+
+  var K = "/knowledgeportal"
+  var T = "/trainingportal"
+  var PD = "/professionaldevportal"
+  var R = "/researchportal"
+  var L = "/labportal"
+  var AB = "/aboutncs4"
+  var E = "/events"
+
+//check if ie
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+  var trident = ua.indexOf('Trident/');
+
+
+
+  //======================[Helper Functions]=============================
+
+  //Toggle Visibility
+  function toggleVis(x) {
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+
+      // $("#MPOuterMost").style.marginLeft = "11vw !important;"
+    } else {
+      x.style.display = 'none';
+
+      // $("#MPOuterMost").style.marginLeft = "0%;"
+    }
+  }
+
+  //open/close menu
+  function open_close() {
+    //alert(dlist.length);
+    open = !open;
+    console.log("OPEN:", open);
+    console.log("SCRUNCH:",scrunch);
+    if (open) { //open it
+      width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      if(width > 768){
+        //scrunch page
+        scrunch = true;
+
+        if (path.includes(K) || path.includes(T) || path.includes(PD) || path.includes(R) || path.includes(L) || path.includes(AB) || path.includes(E) ) { //make sure nothing goes wonky on other pages
+          document.getElementById("MPOuter").style["transition"] = "all 0.5s ease-in-out 0s";
+          document.getElementById("MPOuter").style["margin-left"] = "182px";
+          // console.log("SCRUNCH");
+        }
+      }
+
+      //move sidenav
+      if(bg.hasClass("move")){
+        bg.removeClass("move");
+        if(setBySmallWidth){
+          bg.removeClass("move")
+          if (msie > 0 || trident > 0) // If Internet Explorer, hit with crutch
+          {
+            sbg.removeClass("move");
+            stickits.each(function(){
+              this.removeClass("move");
+            });
+          }
+          setBySmallWidth = false;
+        }
+
+      }
+      if (msie > 0 || trident > 0) // If Internet Explorer, throw crutch at it
+      {
+        if(sbg.hasClass("move")) sbg.removeClass("move");
+        stickits.each(function(){
+          if(this.classList.contains("move")) this.classList.toggle("move");
+        });
+      }
+
+
+
+    } else { //close it
+      width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      if(width > 768 || scrunch){
+        scrunch = false;
+        //unscrunch page
+        if (path.includes(K) || path.includes(T) || path.includes(PD) || path.includes(R) || path.includes(L) || path.includes(AB) || path.includes(E) ) { //make sure nothing goes wonky on other pages
+          document.getElementById("MPOuter").style["transition"] = "all 0.5s ease-in-out 0s";
+          document.getElementById("MPOuter").style["margin-left"] = "0px";
+          // console.log("UNSCRUNCH");
+        }
+      }
+      //close open hoversubs
+        for (let i = 0; i < hsubBtns.length; ++i) {
+          // console.log(hsub[i].classList)
+          if(hsub[i].classList.contains("hsub_ACTIVE")){
+            hsub[i].classList.toggle("hsub_ACTIVE")
+          }
+        }
+
+      //close open sidebar_panels
+      for (var i = 0; i < acc.length; i++) {
+         if (acc[i].type == 'button') {
+           acc[i].classList.remove('active');
+           var sidebar_panel = acc[i].nextElementSibling;
+           sidebar_panel.style.maxHeight = null;
+           // sidebar_panel.style.transition = "max-height 0.05s ease-out";
+         }
+      }
+      // move sidenav
+      if(!bg.hasClass("move")) bg.addClass("move");
+      if (msie > 0 || trident > 0) // If Internet Explorer, kick crutch
+      {
+        if(!sbg.hasClass("move")) sbg.addClass("move");
+        stickits.each(function(){
+          if(!this.classList.contains("move")) this.classList.toggle("move");
+        });
+      }
+
+    }
+  }
+  const ORIG_HEIGHT = 50;
+  function repositionNav(){
+    width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    // width2 = window.innerWidth || document.documentElement.clientWidth || document.body.offsetWidth;
+
+    if(width < 768) nav_height = 50;
+    else nav_height = $(".navbar-nav").position().top + $(".navbar-nav").outerHeight(true);
+    // console.log("mpouter:",$("#MPOuter").offset().top, "nav:",nav_height);
+
+    bg.css("top", nav_height - ORIG_HEIGHT +"px")
+    // var bg_height = (nav_height - ORIG_HEIGHT) + $("#MPFooterLink").position().top + $("#MPFooterLink").outerHeight(true);
+    // console.log("HEIGHT:::", bg_height);
+    // bg.css("height", bg_height + "px");
+  }
+
+  //===============================[BODY]======================================
+  $(document).ready(function() {
+    // hide background on other pages
+    if (!path.includes(K) && !path.includes(T) && !path.includes(PD) && !path.includes(R) && !path.includes(L) && !path.includes(AB) && !path.includes(E)) {
+      document.getElementById("sidenav-bg").style["visibility"] = "hidden";
+    } else {
+      document.getElementById("background").style["visibility"] = "visible"
+      for (var i = 0; i < toggleButton.length; i++) {
+        toggleButton[i].style.borderBottomRightRadius = "10px";
+      }
+      var nav = document.getElementsByClassName("nav navbar-nav");
+
+      if (path.includes(K)) {
+        toggleVis(knowledgeportal);
+
+      } else if (path.includes(T)) {
+          toggleVis(trainingportal);
+      } else if (path.includes(PD)) {
+          toggleVis(professionaldevportal);
+      } else if (path.includes(R)) {
+          toggleVis(researchportal);
+      } else if (path.includes(L)) {
+          toggleVis(labportal);
+          document.documentElement.style.setProperty('--alpha-text-color', "white");
+          document.documentElement.style.setProperty('--alpha-bg-color', "rgb(5,58,111)");
+          document.documentElement.style.setProperty('--beta-bg-color', "rgb(12, 97, 183)");
+          document.documentElement.style.setProperty('--gamma-bg-color', "rgb(5,58,111)");
+      } else if (path.includes(AB)) {
+          toggleVis(aboutportal);
+      } else if (path.includes(E)) {
+          toggleVis(eventsportal);
+      }
+
+      //close sidenav if small screen
+      if(width > 768) {
+        document.getElementById("MPOuter").style["margin-left"] = "182px";
+      } else { //sidenav-bg, .stickit
+        setBySmallWidth = true;
+        bg.addClass("noTransition");
+        sbg.addClass("noTransition");
+        bg.addClass("move");
+        if (msie > 0 || trident > 0) // If Internet Explorer, hit with crutch
+        {
+          sbg.addClass("move");
+          stickits.each(function(){
+            this.classList.add("noTransition");
+            this.classList.add("move");
+          });
+        }
+        setTimeout(function () {
+          bg.removeClass("noTransition");
+          sbg.removeClass("noTransition");
+          stickits.each(function(){
+            this.classList.remove("noTransition");
+          });
+        }, 10);
+
+        // setTimeout(function(){
+        //   bg.css("transition", "transform 0.5s ease-in-out 0s");
+        // }, 50); //pause for a tiny bit to make sure the transform is instantaneous
+      }
+    }
+
+    //toggle hsub Event Listener
+    $(".hoversub_btn").click(function(){
+      var id = this.id;
+      id = id[id.length - 1] - 1;
+      hsub[id].classList.toggle("hsub_ACTIVE");
+    })
+
+
+    if (typeof(Storage) !== "undefined") { //if able to use storage
+        for (var i = 0; i < sidebar_panel_list.length; i++) {
+          if(localStorage.getItem(sidebar_panel_list[i].id + "_isopen") === "true"){
+            if(sidebar_panel_list[i].previousElementSibling != null){
+                sidebar_panel_list[i].previousElementSibling.classList.toggle("active"); //toggle parent accordion active
+                // sidebar_panel_list[i].style.transition = "none";
+                sidebar_panel_list[i].style.maxHeight = sidebar_panel_list[i].scrollHeight + "px";
+              } else console.log("sidebar_panel_list[",i,"].previousElementSibling (",sidebar_panel_list[i].id, ") is null")
+          }
+        }
+    }
+  })
+
+  //listen for top width change to align sidenav with topnav
+  repositionNav();
+  $(window).resize(function(){
+    repositionNav();
+  });
+
+  // hamburger_open = false;
+  // $(".navbar-toggle").click(function(){
+  //   console.log(hamburger_open);
+  //   if(hamburger_open){
+  //     bg.css("top", 0+"px")
+  //   } else {
+  //     bg.css("top", 300+"px")
+  //   }
+  //   hamburger_open = !hamburger_open;
+  // });
+
+
+  //open/Close accordions
+  for (var i = 0; i < acc.length; i++) {
+    acc[i].onclick = function() {
+      this.classList.toggle("active"); //toggle active
+      // console.log("THIS", localStorage.getItem(sidebar_panel.id + "_isopen"));
+      var sidebar_panel = this.nextElementSibling;
+      if (sidebar_panel.style.maxHeight) {
+          sidebar_panel.style.maxHeight = null;
+          if (typeof(Storage) !== "undefined") { //if able to use storage
+              localStorage.setItem(sidebar_panel.id + "_isopen", false);
+              // console.log(sidebar_panel.id, localStorage.getItem(sidebar_panel.id + "_isopen"));
+          }
+      } else {
+          sidebar_panel.style.maxHeight = sidebar_panel.scrollHeight + "px";
+          if (typeof(Storage) !== "undefined") { //if able to use storage
+              localStorage.setItem(sidebar_panel.id + "_isopen", true);
+              // console.log(sidebar_panel.id, localStorage.getItem(sidebar_panel.id + "_isopen"));
+          }
+      }
+    }
+  }
+
+
+  // ]]>
+</script>

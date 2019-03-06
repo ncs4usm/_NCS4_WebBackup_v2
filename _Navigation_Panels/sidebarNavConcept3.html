@@ -1,0 +1,761 @@
+<!--
+Sidenavigation
+
+Notes on structure:
+  >Basic structure:
+    Accordion buttons: Can be either link or button
+    if button ->
+      Panel: procedes an accordion and slides open on click. This is full of links(droplistleaf) or divs(hoversubs)
+      if div ->
+        contains links
+
+  Accordion buttons are used for base links, nested links are put into panels, and nested nested links go in hoversubs
+
+ -->
+<style type="text/css">
+  :root {
+    --alpha-text-color: black;
+    --alpha-bg-color: #e8bf43;
+    --beta-bg-color: #eac86a;
+    --gamma-bg-color: #e8bf43;
+  }
+
+  #sidenav-bg {
+    width: 222px;
+    height: 100%;
+    background-color: #e8b220;
+    background-color: var(--alpha-bg-color);
+    position: fixed;
+    z-index: -1;
+    margin-left: 0px;
+  }
+
+  #background {
+    /* STYLE ALTERED AT PAGE LOAD: Some values may not change when adjusted here (check related javascript)*/
+    position: fixed;
+    z-index: 10;
+    left: 0px;
+    top: 0;
+    height: 183%;
+    width: 222px;
+    transition: transform 0.5s ease-in-out 0s;
+    -ms-transform: translate(0em);
+    -webkit-transform: translate(0em);
+    -moz-transform: translate(0em);
+    -o-transform: translate(0em);
+    transform: translate(0em);
+  }
+
+  #background a {
+    color: black;
+    color: var(--alpha-text-color);
+  }
+
+  /*=======[Open/Close Button Stying]=======*/
+
+  button.togglesidebar {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-left: 182px;
+    transition: all 0.3s ease-in-out 0s;
+    background: transparent;
+    border: none;
+    text-shadow: none;
+  }
+
+  button.togglesidebar:hover {
+    /* width: 55px;
+      height: 55px; */
+  }
+
+  button.togglesidebar:focus {
+    outline: none;
+  }
+
+  /*=======[Accordion Styling]=======*/
+
+  button.accordion,
+  a.accordion {
+    display: block;
+    font-weight: bold;
+    background: transparent;
+    color: black;
+    color: var(--alpha-text-color);
+    cursor: pointer;
+    padding: 18px;
+    width: 182px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    visibility: visible;
+    transition: all 0.4s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s, color 0s;
+    /* , color 0.2s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s; */
+  }
+
+  a.accordion {
+    padding-right: 8px;
+    color: black;
+    color: var(--alpha-text-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  button.accordion:after {
+    content: "▼";
+    float: right;
+    transition: transform .5s ease-in-out;
+  }
+
+  button.accordion.active:after {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+
+  button.accordion.active,
+  button.accordion:hover,
+  a.accordion.active,
+  a.accordion:hover {
+    color: white !important;
+    /* background-color: var(--beta-bg-color); */
+  }
+
+  /*=======[Inner sidebar_panel Styling]=======*/
+
+  div.sidebar_panel {
+    padding: 0 15px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    width: 182px;
+  }
+
+  /*submenu*/
+
+  .droplist {
+    /**/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -15px;
+    width: 182px;
+    background-color: #e8b220;
+    background-color: var(--gamma-bg-color);
+  }
+
+  .droplistleaf {
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    color: var(--alpha-text-color);
+    border-left: 11px solid black;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: .4s;
+    padding: 8px 16px;
+    background-color: #e8b220;
+    background-color: var(--gamma-bg-color);
+    margin-left: -15px;
+    width: 182px;
+    font-weight: normal !important;
+    text-decoration: none !important;
+  }
+
+  .droplistleaf:hover {
+    margin: 0;
+    padding-right: 0px;
+    border-left: 16px solid black;
+    /* background-color: #eac257; */
+    /* background-color: var(--beta-bg-color); */
+    /* background-color: var(--beta-bg-color); */
+    width: 182px;
+    color: black;
+    margin-left: -15px;
+    font-weight: normal !important;
+    text-decoration: none !important;
+  }
+
+  /*=======[Hoversub Styling]=======*/
+
+  .hsub_ACTIVE {
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    -webkit-transform: translate(0) !important;
+    -moz-transform: translate(0) !important;
+    -ms-transform: translate(0) !important;
+    -o-transform: translate(0) !important;
+    transform: translate(0) !important;
+    transition-delay: 0s, 0s, 0.4s !important;
+  }
+
+  .hoversub_btn {
+    position: relative;
+    bottom: 32px;
+    right: -14px;
+    background-color: rgba(248, 248, 248, 0.27);
+    border: none;
+    padding: 0px 12px 0px 14px;
+    font-size: 22px;
+    background-image: url(https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png);
+    background-position: center;
+    background-size: 23px;
+    background-repeat: no-repeat;
+  }
+
+  .hoversub_btn:focus {
+    outline: none;
+  }
+
+  .hoversub_btn:active {
+    background-color: rgba(248, 248, 248, 0.5);
+  }
+
+  .hoversub {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transform: translate(4em);
+    -moz-transform: translate(4em);
+    -ms-transform: translate(4em);
+    -o-transform: translate(4em);
+    transform: translate(4em);
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    display: block;
+    position: absolute;
+    /* z-index: 2; */
+    border-left: 1px solid white;
+    left: 222px;
+    margin-top: -32px;
+    width: 200px;
+    /* border: 1px solid black */
+  }
+
+  .hoversub a {
+    background-color: #e8b220;
+    background-color: var(--gamma-bg-color);
+    /*rgba(67,21,9,.78)*/
+    color: black;
+    color: var(--alpha-text-color);
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: normal;
+  }
+
+  .hoversubLeaf:hover {
+    background-color: #eac257;
+    background-color: var(--beta-bg-color);
+  }
+
+  .stickit {
+    display: block;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    background-color: transparent;
+    border: none;
+    width: 11vw;
+    /*make sure it doesn't overlay the whole page*/
+  }
+
+  .move {
+    -webkit-transform: translate(-13em) !important;
+    -moz-transform: translate(-13em) !important;
+    -ms-transform: translate(-13em) !important;
+    -o-transform: translate(-13em) !important;
+    transform: translate(-13em) !important;
+  }
+
+  .noTransition {
+    transition: none !important;
+  }
+
+  /* CREATES FANCY SIDE-BORDER */
+
+  div#sidenav-bg::before {
+    position: absolute;
+    content: ' ';
+    left: 222px;
+    border-right: 1px solid #555;
+    height: 100%;
+    z-index: 100000;
+  }
+
+  /* CREATES BOTTOM FADE-Y BORDER */
+
+  .bot-left {
+    position: relative;
+  }
+
+  .bot-left:before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: -3px;
+    height: 3px;
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#ffe894), to(transparent));
+    background-image: -webkit-linear-gradient(left, #ffe894, transparent);
+    background-image: -moz-linear-gradient(left, #ffe894, transparent);
+    background-image: -o-linear-gradient(left, #ffe894, transparent);
+  }
+
+  .footfix {
+    margin-left: 223px;
+    width: calc(100% - 223px);
+  }
+</style>
+<div id="background" style="visibility: hidden;">
+  <div id="sidenav-bg"></div>
+  <div id="about" class="stickit" style="display: none;"><button type="button" class="togglesidebar" onclick="open_close()">
+      <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" />
+    </button> <a class="accordion" href="/aboutncs4"> ABOUT NCS4</a> <a class="accordion" href="/aboutncs4/our-staff">
+      OUR STAFF</a> <a class="accordion" href="/aboutncs4/research-fellows"> RESEARCH FELLOWS</a> <button type="button"
+      class="accordion"> ADVISORY BOARDS</button>
+    <div id="fema-dhs" class="sidebar_panel"><a class="droplistleaf" href="/aboutncs4/advisory-committees"> ADVISORY
+        COMMITTEES</a> <a class="droplistleaf" href="/aboutncs4/national-advisory-board"> NATIONAL ADVISORY BOARD</a></div>
+    <a class="accordion" href="/aboutncs4/news"> NEWS</a> <a class="accordion" href="/aboutncs4/ncs4-recognition-awards">
+      NCS4 RECOGNITION AWARDS</a> <a class="accordion" href="/aboutncs4/9-11-sport-security-memorial"> 9/11 SPORT
+      SECURITY MEMORIAL</a> <a class="accordion" href="/aboutncs4/contact"> CONTACT</a>
+  </div>
+  <!-- ========================================[KNOWLEDGE]============================================================ -->
+  <div id="knowledge" class="stickit" style="display: none;"><button type="button" class="togglesidebar" onclick="open_close()">
+      <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" />
+    </button> <a class="accordion" href="/knowledgeportal/buyers-guide"> BUYER'S GUIDE</a> <a class="accordion" href="/knowledgeportal/best-practices">
+      BEST PRACTICES</a> <a class="accordion" href="/knowledgeportal/gameday-security"> GAMEDAY SECURITY</a> <a class="accordion"
+      href="/connect/connect-knowledge/uav-summit-2018"> 2018 UAV SUMMIT</a> <a class="accordion" href="/connect/knowledge-portal/knowledge-portal-search">
+      KNOWLEDGE PORTAL (MEMBERS)</a></div>
+  <!-- =======================================[TRAINING]============================================================= -->
+  <div id="training" class="stickit" style="display: none;"><button type="button" class="togglesidebar" onclick="open_close()">
+      <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" />
+    </button> <button type="button" class="accordion"> FEMA/DHS</button>
+    <div id="fema-dhs" class="sidebar_panel"><a class="droplistleaf" href="/trainingportal/fema-dhs/overview"> OVERVIEW</a>
+      <a class="droplistleaf" style="white-space: nowrap;" href="/trainingportal/fema-dhs/risk-management"> RISK
+        MANAGEMENT</a> <a class="droplistleaf" href="/trainingportal/fema-dhs/evacuation"> EVACUATION</a> <a class="droplistleaf"
+        href="/trainingportal/fema-dhs/incident-management"> INCIDENT MANAGEMENT</a> <a class="droplistleaf" href="/trainingportal/fema-dhs/enhanced-incident-management">
+        ENHANCED INCIDENT MANAGEMENT</a></div>
+    <button type="button" class="accordion">INTERNATIONAL</button>
+    <div id="international" class="sidebar_panel">
+      <div class="hoversubContainer"><a class="droplistleaf" href="/trainingportal/international/interpol"> INTERPOL</a>
+        <span style="float: right; height: 0px;"><button id="hsub_btn1" class="hoversub_btn" type="button"> </button></span>
+        <div id="hsub1" class="hoversub"><a class="hoversubLeaf" href="/trainingportal/international/interpol/project-stadia">PROJECT
+            STADIA</a> <a class="hoversubLeaf" href="/trainingportal/international/interpol/international-sport-safety-and-security-professional-certificate">
+            INTERNATIONAL SPORT SAFETY AND SECURITY PROFESSIONAL CERTIFICATE</a></div>
+      </div>
+      <a class="droplistleaf" href="/trainingportal/international/alliance-members">ALLIANCE MEMBERS</a> <a class="droplistleaf"
+        href="/trainingportal/international/international-institute-for-counter-terrorism">INTERNATIONAL INSTITUTE FOR
+        COUNTER-TERRORISM</a> <a class="droplistleaf" href="/trainingportal/international/resource-links"> RESOURCE
+        LINKS</a>
+    </div>
+  </div>
+  <!-- ========================================[EVENTS]============================================================ -->
+  <div id="eventsportal" class="stickit" style="display: none;"><button type="button" class="togglesidebar" onclick="open_close()">
+      <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" />
+    </button> 
+    <a class="accordion" href="/events/national-conference"> CONFERENCE</a> 
+    <a class="accordion" href="/events/summits">SUMMITS</a>
+    <a class="accordion" href="/workshop">WORKSHOP</a>
+  </div>
+  <!-- ========================================[RESEARCH]============================================================ -->
+  <div id="research" class="stickit" style="display: none;"><button type="button" class="togglesidebar" onclick="open_close()">
+      <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" />
+    </button> <a class="accordion" href="http://aquila.usm.edu/jsss/"> JOURNAL OF SPORT SAFETY</a> <a class="accordion"
+      href="/researchportal/dissertations"> DISSERTATIONS</a> <a class="accordion" href="/researchportal/publications">
+      PUBLICATIONS</a> <a class="accordion" href="/aboutncs4/research-fellows"> RESEARCH FELLOWS</a></div>
+  <!-- =======================================[LAB]============================================================= -->
+  <div id="lab" class="stickit" style="display: none;"><button type="button" class="togglesidebar" onclick="open_close()">
+      <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512_WHITE.png" />
+    </button> <button type="button" class="accordion"> ABOUT</button>
+    <div id="lab-about" class="sidebar_panel">
+      <!-- <a href="/labportal/about" class="droplistleaf">
+            OVERVIEW</a> --> <a href="/labportal/about/integrated-technology"
+        class="droplistleaf"> INTEGRATED TECHNOLOGY</a> <a href="/labportal/about/charter-donors" class="droplistleaf">
+        CHARTER <br />DONORS</a></div>
+    <button type="button" class="accordion"> LAB SERVICES</button>
+    <div id="lab-services" class="sidebar_panel"><a href="/labportal/lab-services" class="droplistleaf"> OVERVIEW</a>
+      <a href="/labportal/lab-services/evaluated-product-list" class="droplistleaf"> EVALUATED PRODUCT LIST</a></div>
+    <a href="/labportal/train" class="accordion"> TRAINING ACADEMY</a> <a href="/labportal/contact" class="accordion">
+      CONTACT</a>
+  </div>
+  <!-- ========================================[PROF_DEV]============================================================ -->
+  <div id="professionaldev" class="stickit" style="display: none;"><button type="button" class="togglesidebar" onclick="open_close()">
+      <img style="height: 30px;" src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Flat%20Icons/menu-alt-512.png" />
+    </button> <button type="button" class="accordion"> CERTIFICATIONS</button>
+    <div id="certifications" class="sidebar_panel">
+      <div class="hoversubContainer"><a class="droplistleaf" href="/professionaldevportal/certifications/cssp">
+          CERTIFIED SPORT SECURITY PROFESSIONAL</a> <span style="float: right; height: 0px;"><button id="hsub_btn2"
+            class="hoversub_btn" type="button"> </button></span>
+        <div id="hsub2" class="hoversub"><a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp">OVERVIEW</a>
+          <a class="hoversubLeaf" style="white-space: nowrap;" href="/professionaldevportal/certifications/cssp/getting-started">GETTING
+            STARTED</a> <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/benefits">BENEFITS</a>
+          <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/news-testimonials">NEWS &amp;
+            TESTIMONIALS</a> <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/forms">FORMS</a>
+          <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/recertification">RECERTIFICATION</a>
+          <a class="hoversubLeaf" href="/professionaldevportal/certifications/cssp/appeals-complaints">APPEALS &amp;
+            COMPLAINTS</a></div>
+      </div>
+      <div class="hoversubContainer"><a class="droplistleaf" href="/professionaldevportal/certifications/csvs">
+          CERTIFIED SPORT VENUE STAFF</a> <span style="float: right; height: 0px;"><button id="hsub_btn3" class="hoversub_btn"
+            type="button"> </button></span>
+        <div id="hsub3" class="hoversub"><a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/how-it-works">
+            HOW IT WORKS</a> <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/training">
+            TRAINING</a> <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/background-screening">
+            BACKGROUND SCREENING</a> <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/reporting">
+            REPORTING</a> <a class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/faqs"> FAQ's</a> <a
+            class="hoversubLeaf" href="/professionaldevportal/certifications/csvs/contact"> CONTACT</a></div>
+      </div>
+    </div>
+    <a href="/connect" class="accordion"> NCS<sup>4</sup> CONNECT</a> <button type="button" class="accordion">
+      ACADEMICS</button>
+    <div id="academics" class="sidebar_panel"><a class="droplistleaf" href="/professionaldevportal/academics/mba-program">
+        MBA PROGRAM</a> <a class="droplistleaf" href="/professionaldevportal/academics/graduate-certificate">GRADUATE
+        CERTIFICATE</a></div>
+  </div>
+  <!-- <script src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/JSFiles/sidebarNavConcept3_min.js"></script> -->
+  <script>
+    // <![CDATA[
+    //get fundamentals
+    var acc = document.getElementsByClassName('accordion');
+    var sidebar_panel_list = document.getElementsByClassName('sidebar_panel');
+    var hsub = document.getElementsByClassName('hoversub');
+    var toggleButton = document.getElementsByClassName('togglesidebar');
+    var hsubBtns = document.getElementsByClassName('hoversub_btn');
+    var bg = $("#background");
+    var sbg = $("#sidenav-bg");
+    var stickits = $(".stickit");
+    // var dynamicWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    //get Nav Variables
+    var aboutportal = document.getElementById('about');
+    var knowledgeportal = document.getElementById('knowledge');
+    var trainingportal = document.getElementById('training');
+    var researchportal = document.getElementById('research');
+    var labportal = document.getElementById('lab');
+    var professionaldevportal = document.getElementById('professionaldev');
+    var eventsportal = document.getElementById('eventsportal');
+
+
+    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var open = true;
+    var setBySmallWidth = false;
+    if (width <= 768) open = false;
+    var scrunch = false;
+    //get paths
+    var path = window.location.pathname;
+
+    var K = "/knowledgeportal"
+    var T = "/trainingportal"
+    var PD = "/professionaldevportal"
+    var R = "/researchportal"
+    var L = "/labportal"
+    var AB = "/aboutncs4"
+    var E = "/events"
+
+    //check if internet explorer
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    var trident = ua.indexOf('Trident/');
+
+
+
+    //======================[Helper Functions]=============================
+
+    //Toggle Visibility
+    //  Everything is display:none by default: this is used to toggle the right one into visibility
+    function toggleVis(x) {
+      if (x.style.display === 'none') {
+        x.style.display = 'block';
+
+        // $("#MPOuterMost").style.marginLeft = "11vw !important;"
+      } else {
+        x.style.display = 'none';
+
+        // $("#MPOuterMost").style.marginLeft = "0%;"
+      }
+    }
+
+    //open/close menu
+    function open_close() {
+      //alert(dlist.length);
+      open = !open;
+      console.log("OPEN:", open);
+      console.log("SCRUNCH:", scrunch);
+      if (open) { //open it
+        width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if (width > 768) {
+          //scrunch page
+          scrunch = true;
+
+          if (path.includes(K) || path.includes(T) || path.includes(PD) || path.includes(R) || path.includes(L) || path
+            .includes(AB) || path.includes(E)) { //make sure nothing goes wonky on other pages
+            document.getElementById("MPOuter").style["transition"] = "all 0.5s ease-in-out 0s";
+            document.getElementById("MPOuter").style["margin-left"] = "219px";
+            //move footer
+            document.getElementById("MPOuterFooter").style["transition"] = "all 0.5s ease-in-out 0s";
+            document.getElementById("MPOuterFooter").style["margin-left"] = "223px";
+            document.getElementById("MPOuterFooter").style["width"] = "calc(100% - 223px)";
+            document.getElementById("MPFooterLink").style["transition"] = "all 0.5s ease-in-out 0s";
+            document.getElementById("MPFooterLink").style["margin-left"] = "223px";
+            document.getElementById("MPFooterLink").style["width"] = "calc(100% - 223px)";
+            // console.log("SCRUNCH");
+          }
+        }
+
+        //move sidenav
+        if (bg.hasClass("move")) {
+          bg.removeClass("move");
+          if (setBySmallWidth) {
+            bg.removeClass("move")
+            if (msie > 0 || trident > 0) // If Internet Explorer, hit with crutch
+            {
+              sbg.removeClass("move");
+              stickits.each(function () {
+                this.removeClass("move");
+              });
+            }
+            setBySmallWidth = false;
+          }
+
+        }
+        if (msie > 0 || trident > 0) // If Internet Explorer, throw crutch at it
+        {
+          if (sbg.hasClass("move")) sbg.removeClass("move");
+          stickits.each(function () {
+            if (this.classList.contains("move")) this.classList.toggle("move");
+          });
+        }
+
+      } else { //close it
+
+        width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if (width > 768 || scrunch) {
+          scrunch = false;
+          //unscrunch page
+          if (path.includes(K) || path.includes(T) || path.includes(PD) || path.includes(R) || path.includes(L) || path
+            .includes(AB) || path.includes(E)) { //make sure nothing goes wonky on other pages
+            document.getElementById("MPOuter").style["transition"] = "all 0.5s ease-in-out 0s";
+            document.getElementById("MPOuter").style["margin-left"] = "40px";
+            //move footer
+            document.getElementById("MPOuterFooter").style["transition"] = "all 0.5s ease-in-out 0s";
+            document.getElementById("MPOuterFooter").style["margin-left"] = "40px";
+            document.getElementById("MPOuterFooter").style["width"] = "calc(100% - 40px)";
+            document.getElementById("MPFooterLink").style["transition"] = "all 0.5s ease-in-out 0s";
+            document.getElementById("MPFooterLink").style["margin-left"] = "40px";
+            document.getElementById("MPFooterLink").style["width"] = "calc(100% - 40px)";
+            // console.log("UNSCRUNCH");
+          }
+        }
+        //close the open hoversubs
+        for (let i = 0; i < hsubBtns.length; ++i) {
+          if (hsub[i].classList.contains("hsub_ACTIVE")) {
+            hsub[i].classList.toggle("hsub_ACTIVE")
+          }
+        }
+
+        //close open sidebar_panels
+        for (var i = 0; i < acc.length; i++) {
+          if (acc[i].type == 'button') {
+            acc[i].classList.remove('active');
+            var sidebar_panel = acc[i].nextElementSibling;
+            sidebar_panel.style.maxHeight = null;
+            // sidebar_panel.style.transition = "max-height 0.05s ease-out";
+          }
+        }
+        // move sidenav
+        if (!bg.hasClass("move")) bg.addClass("move");
+        if (msie > 0 || trident > 0) // If Internet Explorer, kick crutch
+        {
+          if (!sbg.hasClass("move")) sbg.addClass("move");
+          stickits.each(function () {
+            if (!this.classList.contains("move")) this.classList.toggle("move");
+          });
+        }
+      }
+
+    }
+    const ORIG_HEIGHT = 50;
+
+    function repositionNav() {
+      width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+      if (width < 768) nav_height = 50;
+      else nav_height = $(".navbar-nav").position().top + $(".navbar-nav").outerHeight(true);
+
+      bg.css("top", nav_height - ORIG_HEIGHT + "px")
+
+    }
+
+    //===============================[BODY]======================================
+    $(document).ready(function () {
+      // hide background on other pages---------------------------------------
+      if (!path.includes(K) && !path.includes(T) && !path.includes(PD) && !path.includes(R) && !path.includes(L) &&
+        !path.includes(AB) && !path.includes(E)) {
+        document.getElementById("sidenav-bg").style["visibility"] = "hidden";
+      } else {
+        document.getElementById("background").style["visibility"] = "visible"
+        for (var i = 0; i < toggleButton.length; i++) {
+          toggleButton[i].style.borderBottomRightRadius = "10px";
+        }
+        var nav = document.getElementsByClassName("nav navbar-nav");
+
+        if (path.includes(K)) {
+          toggleVis(knowledgeportal);
+
+        } else if (path.includes(T)) {
+          toggleVis(trainingportal);
+        } else if (path.includes(PD)) {
+          toggleVis(professionaldevportal);
+        } else if (path.includes(R)) {
+          toggleVis(researchportal);
+        } else if (path.includes(L)) {
+          toggleVis(labportal);
+          document.documentElement.style.setProperty('--alpha-text-color', "white");
+          document.documentElement.style.setProperty('--alpha-bg-color', "rgb(5,58,111)");
+          document.documentElement.style.setProperty('--beta-bg-color', "rgb(12, 97, 183)");
+          document.documentElement.style.setProperty('--gamma-bg-color', "rgb(5,58,111)");
+        } else if (path.includes(AB)) {
+          toggleVis(aboutportal);
+        } else if (path.includes(E)) {
+          toggleVis(eventsportal);
+        } else if (path.includes('/testing')) {
+          toggleVis(eventsportal);
+        }
+
+        //close sidenav if small screen---------------------------------------------
+        if (width > 768) {
+          document.getElementById("MPOuter").style["margin-left"] = "219px";
+          document.getElementById("MPOuterFooter").style["margin-left"] = "223px";
+          document.getElementById("MPOuterFooter").style["width"] = "calc(100% - 223px)";
+          document.getElementById("MPFooterLink").style["margin-left"] = "223px";
+          document.getElementById("MPFooterLink").style["width"] = "calc(100% - 223px)";
+        } else { //sidenav-bg, .stickit
+          document.getElementById("MPOuter").style["margin-left"] = "40px";
+          document.getElementById("MPOuterFooter").style["margin-left"] = "40px";
+          document.getElementById("MPOuterFooter").style["width"] = "calc(100% - 40px)";
+          document.getElementById("MPFooterLink").style["margin-left"] = "40px";
+          document.getElementById("MPFooterLink").style["width"] = "calc(100% - 40px)";
+          setBySmallWidth = true;
+          bg.addClass("noTransition");
+          sbg.addClass("noTransition");
+          bg.addClass("move");
+          if (msie > 0 || trident > 0) // If Internet Explorer, hit with crutch
+          {
+            sbg.addClass("move");
+            stickits.each(function () {
+              this.classList.add("noTransition");
+              this.classList.add("move");
+            });
+          }
+          setTimeout(function () {
+            bg.removeClass("noTransition");
+            sbg.removeClass("noTransition");
+            stickits.each(function () {
+              this.classList.remove("noTransition");
+            });
+          }, 10);
+        }
+      }
+
+      //toggle hsub Event Listener -----------------------------------------
+      $(".hoversub_btn").click(function () {
+        var id = this.id;
+        id = id[id.length - 1] - 1;
+        hsub[id].classList.toggle("hsub_ACTIVE");
+      })
+
+      //open hsub if it has been previously opened in a previous page session ---------------------------------
+      if (typeof (Storage) !== "undefined") { //if able to use storage
+        for (var i = 0; i < sidebar_panel_list.length; i++) {
+          if (localStorage.getItem(sidebar_panel_list[i].id + "_isopen") === "true") {
+            if (sidebar_panel_list[i].previousElementSibling != null) {
+              sidebar_panel_list[i].style.transition = "none";
+              sidebar_panel_list[i].previousElementSibling.classList.toggle("active"); //toggle parent accordion active
+
+              sidebar_panel_list[i].style.maxHeight = sidebar_panel_list[i].scrollHeight + "px";
+              let thing = sidebar_panel_list[i].style;
+              setTimeout(function () {
+                thing.transition = '';
+                console.log(thing.transition)
+              }, 50);
+            } else console.log("sidebar_panel_list[", i, "].previousElementSibling (", sidebar_panel_list[i].id,
+              ") is null")
+          }
+        }
+      }
+
+      //add lower border to active accordion ------------------------------------------------------------------------------------------------------------
+      for (let i = 0; i < acc.length; ++i) {
+        if (acc[i].href !== undefined) {
+          if (window.path === acc[i].pathname) { // check if btn is the active tab by comparing with path
+            acc[i].classList.add('bot-left');
+          }
+        }
+      }
+      //also panels
+      for (let i = 0; i < sidebar_panel_list.length; ++i) {
+        for (let j = 0; j < sidebar_panel_list[i].children.length; ++j) {
+          if (sidebar_panel_list[i].children[j].pathname !== undefined && window.path === sidebar_panel_list[i].children[
+              j].pathname) { // check if btn is the active tab by comparing with path
+            sidebar_panel_list[i].children[j].classList.add('bot-left');
+            sidebar_panel_list[i].previousElementSibling.classList.add('bot-left');
+          }
+        }
+      }
+      //also hsubs
+      for (let i = 0; i < hsub.length; ++i) {
+        for (let j = 0; j < hsub[i].children.length; ++j) {
+          if (hsub[i].children[j].pathname !== undefined && window.path === hsub[i].children[j].pathname) { // check if btn is the active tab by comparing with path
+            hsub[i].children[j].classList.add('bot-left');
+            hsub[i].previousElementSibling.previousElementSibling.classList.add('bot-left');
+            hsub[i].parentElement.parentElement.previousElementSibling.classList.add('bot-left');
+          }
+        }
+      }
+
+    }); //end doc.ready ============================================================
+
+    //listen for top width change to keep sidenav and topnav aligned
+    repositionNav();
+    document.getElementById("MPOuter").style.paddingTop = $("#NAV").height() + "px";
+    $(window).resize(function () {
+      repositionNav();
+      //add padding to bottom of main content
+      document.getElementById("MPOuter").style.paddingBottom = parseInt(document.getElementById("MPOuterFooter").style
+        .height.replace("px", "")) + 10 + "px";
+      document.getElementById("MPOuter").style.paddingTop = $("#NAV").height() + "px";
+    });
+
+    //open/Close accordions--------------------------
+    for (var i = 0; i < acc.length; i++) {
+      acc[i].onclick = function () {
+        this.classList.toggle("active"); //toggle active
+        var sidebar_panel = this.nextElementSibling;
+        if (sidebar_panel.style.maxHeight) {
+          sidebar_panel.style.maxHeight = null;
+          if (typeof (Storage) !== "undefined") { //if able to use storage
+            localStorage.setItem(sidebar_panel.id + "_isopen", false);
+          }
+        } else {
+          sidebar_panel.style.maxHeight = sidebar_panel.scrollHeight + "px";
+          if (typeof (Storage) !== "undefined") { //if able to use storage
+            localStorage.setItem(sidebar_panel.id + "_isopen", true);
+          }
+        }
+      }
+    }
+    // ]]>
+  </script>
+</div>

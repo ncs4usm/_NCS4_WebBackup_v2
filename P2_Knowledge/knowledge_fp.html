@@ -1,0 +1,228 @@
+<style type="text/css">
+  .f-col a {
+    background: rgb(76, 97, 123);
+    /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(76, 97, 123, 1) 0%, rgba(58, 77, 102, 1) 47%, rgba(46, 66, 86, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(76, 97, 123, 1) 0%, rgba(58, 77, 102, 1) 47%, rgba(46, 66, 86, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(76, 97, 123, 1) 0%, rgba(58, 77, 102, 1) 47%, rgba(46, 66, 86, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#4c617b', endColorstr='#2e4256', GradientType=1);
+    /* IE6-9 */
+    color: white;
+    justify-content: center;
+    text-indent: 1.1em;
+  }
+
+  .flat_format.small {
+    border-color: #292929 !important;
+  }
+
+  .content_swap {
+    opacity: 1;
+    max-height: 100%;
+    transition: opacity .2s ease;
+  }
+
+  .anim {
+    opacity: 0 !important;
+  }
+
+  .hide {
+    display: none !important;
+  }
+  /* [fader end] */
+
+  .flat_format.small {
+    border-color: #292929;
+  }
+
+  .flat_format.small:nth-child(-n+2) {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .flat_format.small:not(:nth-last-child(n+2)) {
+    border-radius: 0 0 20px 20px;
+  }
+
+  .flat_format.small:hover {
+    color: #eac257;
+  }
+
+  .header-button {
+    border-radius: 100px;
+    font-weight: bold;
+    border: 3px solid black;
+  }
+
+  .flat_format {
+    color: #444;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    min-height: 100px;
+    min-width: 200px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 1.7em;
+  }
+
+  .flat_format img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    max-width: 120px;
+    padding: 10px;
+    margin: auto;
+  }
+
+  .flex-table {
+    display: table;
+    width: 60%;
+    margin: auto;
+  }
+
+  .f-row {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    width 100%;
+  }
+
+  .f-col {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: column;
+  }
+
+  .f-content {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spacer {
+    width: 12%;
+  }
+
+  .text-area:hover {
+    text-decoration: none;
+  }
+
+  .G {
+    background: rgb(229, 204, 142);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(229, 204, 142, 1) 1%, rgba(232, 178, 32, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e5cc8e', endColorstr='#e8b220', GradientType=1);
+  }
+
+  .B {
+    background: rgb(117, 196, 216);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(117, 196, 216, 1) 0%, rgba(27, 147, 195, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#75c4d8', endColorstr='#1b93c3', GradientType=1);
+  }
+
+  div.f-row {
+    padding-bottom: 20px;
+    -webkit-transform: translate(0%);
+    -moz-transform: translate(0%);
+    -ms-transform: translate(0%);
+    -o-transform: translate(0%);
+    transform: translate(0%);
+    opacity: 1;
+    transition: .5s ease;
+    justify-content: center;
+  }
+
+  .section {
+    display: none;
+  }
+  /* #content1 > .f-row > */
+
+  .flat_format.small {
+    width: 100%;
+    max-width: none;
+    text-align: left;
+    border: 3px solid #424242;
+    min-height: 3.2em;
+    /* border-radius: 56px;
+  border: 3px solid #424242;
+  align-items: center;
+  justify-content: center;
+  color: #383838;
+  height: 6em;
+  margin-left: .5em;
+  margin-right: .5em; */
+  }
+
+  a.flat_format:hover {
+    text-decoration: none;
+    transition: opacity 1s ease;
+  }
+
+  .flat_format.small:not(:nth-last-child(1)) {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    .flex-table {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 750px) {
+    .flex-table {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .flex-table {
+      width: 75%;
+    }
+  }
+}
+@media (max-width: 550px) {
+  .f-row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .spacer {
+    display: none;
+  }
+}
+</style>
+<br />
+<div class="f-row" style="width: 80%; margin: auto;">
+  <div class="f-content" style="flex-direction: column;">
+    <br />
+    <p style="font-weight: bold;">Download a complimentary copy of NCS<sup>4</sup>’s <em>Safety and Security Best Practice Guides</em> or browse through our publication, Gameday Security, to learn about the latest industry trends and issues. Check out NCS<sup>4</sup> Connect, our
+      membership program that allows you and your organization to network and engage with other leaders in the spectator sports safety and security industry.</p>
+  </div>
+</div>
+<div id="section1" class="margins_wide_content flex-table">
+  <!-- <div class="f-row header" style="margin-top:4%">
+        <p>KNOWLEDGE</p>
+    </div> -->
+  <div class="f-col">
+    <div class="f-content spacer"> </div>
+    <a class="f-content flat_format small" href="/knowledgeportal/buyers-guide"> <span>Buyer's Guide</span> </a>
+    <a class="f-content flat_format small" href="/knowledgeportal/best-practices"> <span>Best Practices</span> </a>
+    <a class="f-content flat_format small" href="/knowledgeportal/gameday-security"> <span>Gameday Security</span> </a>
+    <!-- <a class="f-content flat_format small" href="https://connect.ncs4.com/sandbox/knowledgeportal/analysis-of-incidents">
+
+                  <span>Analysis of Incidents</span>
+          </a> -->
+    <a class="f-content flat_format small" href="/connect/knowledge-portal/knowledge-portal-search"> <span>Knowledge Portal (Members Only)</span> </a>
+  </div>
+</div>
