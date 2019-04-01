@@ -1,7 +1,7 @@
-// $(document).ready(()=>{
-//   var img = SVG('techy-bg')
-//   $.get()
-// });
+$(document).ready(()=>{
+  var img = SVG('techy-bg')
+  $.get()
+});
 
 app = angular.module('IntApp', []);
 
@@ -14,103 +14,122 @@ const SAMPLEPARAGRAPH = /*html*/`
 <p>Vestibulum non velit eu eros mattis imperdiet. Maecenas non lorem justo. Vivamus finibus, nulla eu blandit facilisis, nisl magna tristique odio, a laoreet dui felis sit amet mi. Maecenas tristique, justo eget molestie dictum, dui dolor aliquam nisl, in bibendum orci orci at orci. Etiam ut mollis diam, ut elementum nisi. Aenean vel tortor ornare, convallis leo id, fermentum mauris. Donec pharetra aliquet velit et dignissim. Praesent in nisl venenatis, consectetur nunc id, volutpat ligula. Duis ligula sem, convallis id mattis non, imperdiet nec risus. Duis a felis risus.</p>
 `;
 app.controller('IntCtrl', ['$scope', '$sce', function($scope, $sce) {
- 
+
   $scope.library = {
     'Partner' : {
-      'desc': [
-        $sce.trustAsHtml( /*HTML*/`<p>Open to all security integrators, manufacturers, software providers, and other affiliates and stakeholders interested in solving critical issues in the sport and entertainment safety and security industry. Government and academic national laboratories are encouraged to join.</p>
-        `), 
-        $sce.trustAsHtml( /*HTML*/`
+      'desc': $sce.trustAsHtml( /*HTML*/`
+        <p>Open to all security integrators, manufacturers, software providers, and other affiliates and stakeholders interested in solving critical issues in the sport and entertainment safety and security industry. Government and academic national laboratories are encouraged to join.</p>
+        <ul>
+        <li><strong>Make a dedicated commitment to the National Lab </strong></li>
+        <li><strong>Research - </strong>Perform collaborative and sponsored R&amp;D on subjects related to sport and entertainment security facilities, equipment, processes and personnel.</li>
+        <li><strong>Become a member to the International Sport Security Strategic Partners with INTERPOL</strong></li>
+        <li><strong>Access to the Sport Technology Knowledge Portal &ndash; </strong>Comprehensive repository of good practices and an online collaborative platform where experts in the field can share, discuss, analyze and publish information on the evolving aspects of sport technology</li>
+        <li><strong>Participate in National Security Events - </strong>Present Case Studies and educate professionals at the Annual National Sport Safety and Security Conference, National Summits and through other available channels</li>
+        <li><strong>Training Academy </strong>- Utilize a simulated operation center to test and apply safety and security best -practices for training and exercise capabilities</li>
+        <li><strong>Technology Applications - </strong>Perform laboratory testing on related products and services with <em>Product Reviews</em>, <em>Product Assessments</em>, and <em>Showcases</em></li>
+        </ul>
         <p>Investment:&nbsp; $18,000 per year for Global Investment (INTERPOL)</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $12,000 per year for Domestic Investment</p>
-        <p>&nbsp;</p>`)
-      ],
-      'benefits': [0,1,2,3,4,5,6],
+        <p>&nbsp;</p>
+      `),
     },
     'Associate' : {
-      'desc': [
-        $sce.trustAsHtml(`
+      'desc': $sce.trustAsHtml(`
         <p>Open to all academia, architects, master planners, designers, federal agencies, consultants, and trade alliances stakeholders engaged in supporting the advances of sport and entertainment security solutions.</p>
-        `), 
-        $sce.trustAsHtml( /*HTML*/`
+        <ul>
+        <li><strong>Make a dedicated commitment to the National Lab </strong></li>
+        <li><strong>Access to the Sport Technology Knowledge Portal &ndash; </strong>Comprehensive repository of good practices and an online collaborative platform where experts in the field can share, discuss, analyze and publish information on the evolving aspects of sport technology</li>
+        <li><strong>Technology Applications - </strong>Perform laboratory testing on related products and services with <em>Product Reviews</em>, <em>Product Assessments</em>, and <em>Showcases</em></li>
+        </ul>
         <p>Investment: $9,000 per year</p>
-      `)],
-      'benefits': [0,3,5],
+      `),
     },
     'Friend': {
-      'desc': [
-        $sce.trustAsHtml(`
+      'desc': $sce.trustAsHtml(`
         <p>Open to those technology corporations interested in seeking knowledge, and information relative to sport and entertainment technology.</p>
         <p>Exclusively for technology corporations that have a principal function of goods and services to the sports and entertainment safety and security industry.&nbsp;</p>
-        `), 
-        $sce.trustAsHtml( /*HTML*/`
+        <ul>
+        <li><strong>Access to the Sport Technology Knowledge Portal &ndash; </strong>Comprehensive repository of good practices and an online collaborative platform where experts in the field can share, discuss, analyze and publish information on the evolving aspects of sport technology</li>
+        </ul>
         <p>Investment: $1,000 per year</p>
-      `)],    
-      'benefits': [0],
-    }
+      `),    
+
+    },
   }
-  
 
-  $scope.benefits = [
-    $sce.trustAsHtml(`<strong>Make a dedicated commitment to the National Lab </strong>`),
-    $sce.trustAsHtml(`<strong>Become a member to the International Sport Security Strategic Partners with INTERPOL</strong>`),
-    $sce.trustAsHtml(`<strong>Research - </strong>Perform collaborative and sponsored R&amp;D on subjects related to sport and entertainment security facilities, equipment, processes and personnel.`),
-    $sce.trustAsHtml(`<strong>Access to the Sport Technology Knowledge Portal &ndash; </strong>Comprehensive repository of good practices and an online collaborative platform where experts in the field can share, discuss, analyze and publish information on the evolving aspects of sport technology`),
-    $sce.trustAsHtml(`<strong>Participate in National Security Events - </strong>Present Case Studies and educate professionals at the Annual National Sport Safety and Security Conference, National Summits and through other available channels`),
-    $sce.trustAsHtml(`<strong>Training Academy </strong>- Utilize a simulated operation center to test and apply safety and security best -practices for training and exercise capabilities`),
-    $sce.trustAsHtml(`<strong>Technology Applications - </strong>Perform laboratory testing on related products and services with <em>Product Reviews</em>, <em>Product Assessments</em>, and <em>Showcases</em>`),
-  ];
+  $scope.libkeys = Object.entries($scope.library);
 
-  // $scope.libkeys = Object.entries($scope.library);
+
+
+  /*Pop Win Controller (pwItem)
+    VARIABLES:
+      Obj: Shallow copy of the current library entry
+      Par: Parent of obj's key
+      History: Array of keys used for traversing backwards and forwards in your search
+      tracker: tracks the current index of history: -1 means empty history
+    FUNCTIONS:
+      set: PARAMS: string that is the key for the object to set
+          sets obj with the associated library entry, cuts off the forward history and pushes the new key, sets tracker to new key
+      reset: purges all variables to default
+  */
 
 }])
 
 
 //top tabs of each section
-.directive('tabsContainer', function() {
+.directive('myTabs', function() {
   return {
-    restrict: 'E', //restrict to element notation (<tabs-container/> vs <div tabs-container/> or as an attribute)
-    // transclude: true,
-    scope: {    // including this property makes everything local and contains the scope, so we have to include library and benefits through attributes
-      lib: '=',  // we use just = because the name "lib" is the same as the attribute that we pass library to
-      benefits: '=',
-    },
+    restrict: 'E',
+    transclude: true,
+    scope: {},
     controller: ['$scope', function MyTabsController($scope) {
-      //Objective: Use a tag that tells the rest of the scope what the active tab is, move items in and out depending on the tab clicked
-      $scope.libkeys = Object.entries($scope.lib);
-      $scope.emitted = $scope.libkeys[0][0];
+      var panes = $scope.panes = [];
 
-
-      $scope.emit = (item) => {
-        $scope.emitted = item;
-        // console.log($scope.emitted, lib[$scope.emitted].benefits);
+      $scope.select = function(pane) {
+        angular.forEach(panes, function(pane) {
+          pane.selected = false;
+        });
+        pane.selected = true;
       }
+
+      this.addPane = function(pane) {
+        if(panes.length === 0) {
+          $scope.select(pane);
+        }
+        panes.push(pane);
+      };
     }],
     template: /*html*/`
     <div class="tabbable">
       <ul class="nav nav-tabs">
-        <li class="underlined" ng-repeat="(key, val) in lib">
-          <button ng-attr-id="{{key}}" class="btns" ng-class="{highlight:(emitted==key)}" ng-click="emit(key)" type="button">{{key}}</button>
+        <li class="underlined" ng-repeat="pane in panes" ng-class="{active:pane.selected}">
+          <button class="btns" ng-click="select(pane)" type="button">{{pane.title}}</button>
         </li>
       </ul>
-      <div class="tab_content">
-
-        <div class="layered">
-          <div ng-repeat="(key, val) in lib" ng-class={FADE:(emitted!==key)} ng-bind-html="val.desc[0]"></div>
-        </div>
-        <ul class="benefits">
-          <li ng-repeat="(indx, val) in benefits" ng-class={SHOOP:!lib[emitted].benefits.includes(indx)} ng-bind-html="val"></li><!--  -->
-        </ul>
-        <div class="layered">
-          <div ng-repeat="(key, val) in lib" ng-class={FADE:(emitted!==key)} ng-bind-html="val.desc[1]"></div>
-        </div>
-        <!-- divs that slide in and out based on what is being emmitted -->
-      </div>
+      <div class="tab-content" ng-transclude></div>
     </div>
     `
   }
 })
-
+//pane under each set of tabs, fills with data pulled from library
+.directive('myPane', function() {
+  return {
+    require: '^^myTabs',
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@'
+    },
+    link: function(scope, element, attrs, tabsCtrl) {
+      tabsCtrl.addPane(scope);
+    },
+    template: /*html*/`
+    <div class="tab-pane" ng-show="selected">
+      <div class="local-flex" ng-transclude></div>
+    </div>
+    `
+  };
+})
 
 
 // SLIDER 2 =============================================================
