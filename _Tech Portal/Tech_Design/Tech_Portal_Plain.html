@@ -152,6 +152,7 @@
   }
 
   .tabbable {
+    position:relative;
     min-height: 400px;
     background: #e6ecff;
     border-radius: 5px;
@@ -359,7 +360,19 @@
   .ALLIANCE_SLIDER .my-slider2 img.small {
     max-width: 135px;
   }
-
+  .tabbable .tomst {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: 0;
+    padding: 9px 5px 9px 5px;
+    border: 1px solid #222;
+    border-radius: 0 5px;
+    background-color: #DDD;
+  }
+  .tabbable .tomst:hover, .tabbable .tomst:focus {
+    background-color: #eee;
+}
 
   @media (max-width: 600px) {
     .ALLIANCE_SLIDER .tns-inner::after {
@@ -397,7 +410,7 @@
           <div class="q-inner">
             <div style="
                 font-size: 3.3em;
-            ">Technology Alliance's Mission</div>
+            ">Technology Alliance Mission</div>
             <p style="font-size: 1.1em">The mission of the Sports and Entertainment Technology Alliance is to foster education on current and new technologies, and promote best practices for safer and smarter schools, sport and entertainment venues and events</p>
           </div>
         </div>
@@ -416,10 +429,46 @@
           encouraged to
           join.</p>
     </div>
-    <br><br>
+    <br>
+    <div class="margins_wide_content" style="overflow: hidden;"> <!-- margins_wide_content is included in the base website and is basically max-width:1200px; -->
+      <h3>See our Technology Alliance Partners!</h3>
+      <p style="border-top: 7px solid #083972;"></p>
+      <br />
+      <div class="ALLIANCE_SLIDER">
+        <div class="my-slider2">
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.axis.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/Axis_logo_rgb.png"
+                alt="Axis Communications" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.babelstreet.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/babel_street_logo.png"
+                alt="Babel Street" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="http://www.ceia-usa.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/ceia_logo.png"
+                alt="Ceia" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.dellemc.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/dell_emc_logo.png"
+                alt="Dell EMC" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.dimensiondata.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/DimensionData_CoreLogo_Landscape.png"
+                alt="Dimension Data" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.johnsoncontrols.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/jci_logo.png"
+                alt="Johnson Controls" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.microsoft.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/microsoft-logo.png"
+                alt="Microsoft" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.genetec.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Genetec_Logo_RGB_Color_TM-_2018-min.png"
+                alt="Genetec" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="http://www.hitachi.us/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/Hitachi_Corp_logo_Black_on_white_background_5b1_5d.png"
+                alt="Hitachi" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.honeywell.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/HON-Connected_LogoLockup_Pipe_SECURITY-min.png"
+                alt="Honeywell" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.intel.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/intel.png"
+                alt="Intel" class="small" /> </a></div>
+          <div><a target="blank" rel="noopener noreferrer" href="https://www.ameristarsecurity.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/ameristar2.png"
+                alt="Ameristar" /> </a></div>
+        </div>
+      </div>
+    </div>
+
+    <br><br><br><br>
+    
     <h3 class="margins_wide_content" style="color: #084184; font-size: 1.3em;">The Sports and Entertainment Technology
       Alliance
-      Investment is composed of three levels.</h3>
+      Investment currently includes the Partner level.</h3>
     <br>
     <div class="int-container" ng-class="{cloak:true}">
       <!-- Tabs Container -->
@@ -427,46 +476,19 @@
       <br /><br />
 
 
-      <div class="margins_wide_content" style="overflow: hidden;"> <!-- margins_wide_content is included in the base website and is basically max-width:1200px; -->
-        <h3>See our Technology Aliance Partners!</h3>
-        <p style="border-top: 7px solid #083972;"></p>
-        <br />
-        <div class="ALLIANCE_SLIDER">
-          <div class="my-slider2">
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.axis.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/Axis_logo_rgb.png"
-                  alt="Axis Communications" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.babelstreet.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/babel_street_logo.png"
-                  alt="Babel Street" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="http://www.ceia-usa.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/ceia_logo.png"
-                  alt="Ceia" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.dellemc.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/dell_emc_logo.png"
-                  alt="Dell EMC" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.dimensiondata.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/DimensionData_CoreLogo_Landscape.png"
-                  alt="Dimension Data" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.johnsoncontrols.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/jci_logo.png"
-                  alt="Johnson Controls" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.microsoft.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/microsoft-logo.png"
-                  alt="Microsoft" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.genetec.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Genetec_Logo_RGB_Color_TM-_2018-min.png"
-                  alt="Genetec" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="http://www.hitachi.us/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/Strategic_Partners/Hitachi_Corp_logo_Black_on_white_background_5b1_5d.png"
-                  alt="Hitachi" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.honeywell.com/"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/HON-Connected_LogoLockup_Pipe_SECURITY-min.png"
-                  alt="Honeywell" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.intel.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/intel.png"
-                  alt="Intel" class="small" /> </a></div>
-            <div><a target="blank" rel="noopener noreferrer" href="https://www.ameristarsecurity.com"> <img src="https://higherlogicdownload.s3.amazonaws.com/NCS4/9c6c4d55-e531-4334-a8e4-aa15c3ebd848/UploadedImages/Corporate%20Logos/ameristar2.png"
-                  alt="Ameristar" /> </a></div>
-          </div>
-        </div>
-      </div>
+      
+      
     </div>
   </div>
 </div>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.0.12/svg.min.js"></script> -->
 <!-- end app -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.3.7/min/tiny-slider.js"></script> <!-- TinySlider stuff -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> <!-- AngularJS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- required by Angular-->
-<script src="./Tech_Portal.js"></script> <!-- Link to juicy js meat -->
+<!-- TinySlider stuff -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.3.7/min/tiny-slider.js"></script>  -->
+<!-- AngularJS -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  -->
+<!-- required by Angular-->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  -->
+<!--Link to juicy js meat -->
+ <!-- <script src="./Tech_Portal.js"></script>  -->

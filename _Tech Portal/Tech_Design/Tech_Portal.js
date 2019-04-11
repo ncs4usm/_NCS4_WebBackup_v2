@@ -21,33 +21,34 @@ app.controller('IntCtrl', ['$scope', '$sce', function($scope, $sce) {
         $sce.trustAsHtml( /*HTML*/`<p>Open to all security integrators, manufacturers, software providers, and other affiliates and stakeholders interested in solving critical issues in the sport and entertainment safety and security industry. Government and academic national laboratories are encouraged to join.</p>
         `), 
         $sce.trustAsHtml( /*HTML*/`
-        <p>Investment:&nbsp; $18,000 per year for Global Investment (INTERPOL)</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $12,000 per year for Domestic Investment</p>
+        <p>Investment:<br>
+         $18,000 per year for Global Investment (INTERPOL)<br>
+         $12,000 per year for Domestic Investment</p>
         <p>&nbsp;</p>`)
       ],
       'benefits': [0,1,2,3,4,5,6],
     },
-    'Associate' : {
-      'desc': [
-        $sce.trustAsHtml(`
-        <p>Open to all academia, architects, master planners, designers, federal agencies, consultants, and trade alliances stakeholders engaged in supporting the advances of sport and entertainment security solutions.</p>
-        `), 
-        $sce.trustAsHtml( /*HTML*/`
-        <p>Investment: $9,000 per year</p>
-      `)],
-      'benefits': [0,3,5],
-    },
-    'Friend': {
-      'desc': [
-        $sce.trustAsHtml(`
-        <p>Open to those technology corporations interested in seeking knowledge, and information relative to sport and entertainment technology.</p>
-        <p>Exclusively for technology corporations that have a principal function of goods and services to the sports and entertainment safety and security industry.&nbsp;</p>
-        `), 
-        $sce.trustAsHtml( /*HTML*/`
-        <p>Investment: $1,000 per year</p>
-      `)],    
-      'benefits': [0],
-    }
+    // 'Associate' : {
+    //   'desc': [
+    //     $sce.trustAsHtml(`
+    //     <p>Open to all academia, architects, master planners, designers, federal agencies, consultants, and trade alliances stakeholders engaged in supporting the advances of sport and entertainment security solutions.</p>
+    //     `), 
+    //     $sce.trustAsHtml( /*HTML*/`
+    //     <p>Investment: $9,000 per year</p>
+    //   `)],
+    //   'benefits': [0,3,5],
+    // },
+    // 'Friend': {
+    //   'desc': [
+    //     $sce.trustAsHtml(`
+    //     <p>Open to those technology corporations interested in seeking knowledge, and information relative to sport and entertainment technology.</p>
+    //     <p>Exclusively for technology corporations that have a principal function of goods and services to the sports and entertainment safety and security industry.&nbsp;</p>
+    //     `), 
+    //     $sce.trustAsHtml( /*HTML*/`
+    //     <p>Investment: $1,000 per year</p>
+    //   `)],    
+    //   'benefits': [0],
+    // }
   }
   
 
@@ -88,6 +89,7 @@ app.controller('IntCtrl', ['$scope', '$sce', function($scope, $sce) {
     }],
     template: /*html*/`
     <div class="tabbable">
+      <a class="tomst" href="https://teams.microsoft.com/" target="_blank" rel="noopener noreferrer" >Open MS Teams</a>
       <ul class="nav nav-tabs">
         <li class="underlined" ng-repeat="(key, val) in lib">
           <button ng-attr-id="{{key}}" class="btns" ng-class="{highlight:(emitted==key)}" ng-click="emit(key)" type="button">{{key}}</button>
