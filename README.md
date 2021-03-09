@@ -1,6 +1,7 @@
 # _NCS4_WebBackup_v2
 NCS4 Website Backup files
 
+Open source archive of my work at NCS4.
 
 From now on the production will work like this:
 
